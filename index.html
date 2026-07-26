@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anoop ❤️ Amita Wedding</title><!-- Google Fonts --><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet"><style>
+:root{
+  --pink:#f8d7da;
+  --lavender:#e6d7ff;
+  --peach:#ffe5d9;
+  --gold:#d4af37;
+  --white:#ffffff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(to bottom,var(--pink),var(--lavender));
+  color:#333;
+  scroll-behavior:smooth;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)),
+  url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486') center/cover;
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;
+  color:#b76e79;
+}
+
+.hero p{margin-top:10px;font-size:1.2rem;}
+
+.glass{
+  background:rgba(255,255,255,0.3);
+  backdrop-filter:blur(10px);
+  border-radius:20px;
+  padding:30px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.1);
+}
+
+/* SECTION */
+section{padding:60px 20px;text-align:center;}
+h2{
+  font-family:'Playfair Display',serif;
+  margin-bottom:20px;
+  color:#b76e79;
+}
+
+/* CARDS */
+.card{
+  background:white;
+  padding:20px;
+  border-radius:20px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.1);
+  margin:10px;
+  transition:0.3s;
+}
+.card:hover{transform:translateY(-5px);}
+
+/* GRID */
+.grid{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+/* COUNTDOWN */
+#countdown{
+  font-size:1.5rem;
+  margin-top:10px;
+}
+
+/* RSVP */
+input,select,textarea{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border-radius:10px;
+  border:1px solid #ccc;
+}
+
+button{
+  background:var(--gold);
+  color:white;
+  border:none;
+  padding:10px 20px;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+/* FLOATING HEARTS */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  color:#ff6b81;
+  animation:float 6s linear infinite;
+}
+@keyframes float{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-100vh);}
+}
+
+/* SCRATCH CARD */
+canvas{
+  border-radius:20px;
+  background:#ccc;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero h1{font-size:2rem;}
+}
+</style></head><body><!-- HERO --><section class="hero">
+  <div class="glass">
+    <h1>Anoop ❤️ Amita</h1>
+    <p>We're getting married!</p>
+  </div>
+</section><!-- LOVE STORY --><section>
+  <h2>Our Love Story</h2>
+  <div class="grid">
+    <div class="card">First Meet 💫</div>
+    <div class="card">Fell in Love ❤️</div>
+    <div class="card">Forever Begins 💍</div>
+  </div>
+</section><!-- EVENTS --><section>
+  <h2>Wedding Events</h2>
+  <div class="grid">
+    <div class="card">Haldi 🌼</div>
+    <div class="card">Mehendi 🌿</div>
+    <div class="card">Sangeet 🎶</div>
+    <div class="card">Wedding 🔔</div>
+    <div class="card">Reception ✨</div>
+  </div>
+</section><!-- COUNTDOWN --><section>
+  <h2>Countdown</h2>
+  <div id="countdown"></div>
+</section><!-- SCRATCH CARD --><section>
+  <h2>Scratch to Reveal Date 🎉</h2>
+  <canvas id="scratch" width="300" height="150"></canvas>
+  <p id="dateText" style="display:none;">4 February 2027</p>
+</section><!-- RSVP --><section>
+  <h2>RSVP</h2>
+  <div class="glass">
+    <input placeholder="Your Name">
+    <input placeholder="Phone Number">
+    <input placeholder="Number of Guests">
+    <select>
+      <option>Will Attend</option>
+      <option>Can't Attend</option>
+    </select>
+    <textarea placeholder="Message"></textarea>
+    <button>Submit</button>
+  </div>
+</section><!-- VENUE --><section>
+  <h2>Venue</h2>
+  <p>Lucknow, India</p>
+  <iframe src="https://maps.google.com/maps?q=lucknow&t=&z=13&ie=UTF8&iwloc=&output=embed"
+  width="100%" height="300"></iframe>
+</section><!-- FAMILY --><section>
+  <h2>Meet the Family</h2>
+  <div class="grid">
+    <div class="card">Bride Family</div>
+    <div class="card">Groom Family</div>
+  </div>
+</section><!-- FAQ --><section>
+  <h2>FAQs</h2>
+  <div class="card">Dress Code: Traditional & Elegant</div>
+  <div class="card">Arrival Time: 6 PM</div>
+</section><!-- THANK YOU --><section>
+  <h2>Thank You ❤️</h2>
+  <p>We can't wait to celebrate with you!</p>
+</section><script>
+// COUNTDOWN
+let weddingDate = new Date("Feb 4, 2027 18:00:00").getTime();
+let timer = setInterval(function(){
+  let now = new Date().getTime();
+  let gap = weddingDate - now;
+
+  let d = Math.floor(gap/(1000*60*60*24));
+  let h = Math.floor((gap%(1000*60*60*24))/(1000*60*60));
+  let m = Math.floor((gap%(1000*60*60))/(1000*60));
+
+  document.getElementById("countdown").innerHTML =
+  d+" Days "+h+" Hours "+m+" Minutes";
+},1000);
+
+// FLOAT HEARTS
+setInterval(()=>{
+  let heart = document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  document.body.appendChild(heart);
+
+  setTimeout(()=>heart.remove(),6000);
+},500);
+
+// SCRATCH CARD
+let canvas = document.getElementById("scratch");
+let ctx = canvas.getContext("2d");
+
+ctx.fillStyle="#999";
+ctx.fillRect(0,0,300,150);
+
+canvas.addEventListener("mousemove",function(e){
+  if(e.buttons===1){
+    ctx.clearRect(e.offsetX,e.offsetY,20,20);
+    document.getElementById("dateText").style.display="block";
+  }
+});
+</script></body>
+</html>
