@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anoop ❤️ Amita Wedding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+background:linear-gradient(135deg,#ffe4ec,#f3e5ff,#fff);
+overflow-x:hidden;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.hero h1{
+font-family:'Playfair Display';
+font-size:48px;
+color:#d63384;
+}
+
+/* HEART */
+.heart{
+position:fixed;
+top:-10px;
+font-size:20px;
+animation:fall linear forwards;
+}
+@keyframes fall{
+to{transform:translateY(100vh);opacity:0;}
+}
+
+.section{
+padding:60px 20px;
+text-align:center;
+}
+h2{color:#c2185b;margin-bottom:20px}
+
+/* LOVE STORY */
+.timeline{max-width:600px;margin:auto;}
+.step{
+background:rgba(255,255,255,0.6);
+margin:20px 0;
+padding:20px;
+border-radius:15px;
+}
+
+/* EVENTS */
+.event img{
+width:100%;
+max-width:300px;
+border-radius:15px;
+margin:10px 0;
+}
+
+/* SCRATCH */
+.scratch-card{
+width:300px;
+height:150px;
+margin:auto;
+position:relative;
+}
+
+.scratch-text{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+font-weight:bold;
+color:#d63384;
+z-index:1;
+}
+
+canvas{
+position:absolute;
+top:0;
+left:0;
+z-index:2;
+}
+
+/* MAP */
+iframe{
+width:100%;
+height:300px;
+border-radius:10px;
+}
+
+/* FOOTER */
+.footer{
+padding:40px;
+text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+<h1>Anoop ❤️ Amita</h1>
+<p>We're getting married!</p>
+</section>
+
+<!-- LOVE STORY -->
+<section class="section">
+<h2>Our Love Story 💕</h2>
+<div class="timeline">
+<div class="step">Once we were strangers, living in different worlds.</div>
+<div class="step">Then came a moment when our paths crossed.</div>
+<div class="step">A simple hello turned into endless conversations.</div>
+<div class="step">Slowly, friendship turned into love.</div>
+<div class="step">And now, we promise forever ❤️</div>
+</div>
+</section>
+
+<!-- EVENTS -->
+<section class="section">
+<h2>Wedding Events</h2>
+
+<div class="event">
+<h3>Sangeet (2 Feb 2027)</h3>
+<img src="https://images.unsplash.com/photo-1519741497674-611481863552">
+</div>
+
+<div class="event">
+<h3>Haldi (3 Feb 2027)</h3>
+<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
+</div>
+
+<div class="event">
+<h3>Mehendi (3 Feb 2027)</h3>
+<img src="https://images.unsplash.com/photo-1597225244660-1cd128c64284">
+</div>
+
+</section>
+
+<!-- COUNTDOWN -->
+<section class="section">
+<h2>Countdown to Wedding 💍</h2>
+<h1 id="countdown" style="color:#d63384;"></h1>
+</section>
+
+<!-- SCRATCH -->
+<section class="section">
+<h2>Scratch to Reveal Date 🎁</h2>
+
+<div class="scratch-card">
+<div class="scratch-text">4 Feb 2027 💍</div>
+<canvas id="scratch"></canvas>
+</div>
+
+</section>
+
+<!-- MAP -->
+<section class="section">
+<h2>Wedding Venue</h2>
+
+<iframe src="https://maps.google.com/maps?q=Brahma%20Marriage%20Lawn%20Barail%20Rd%20Barabanki%20225001&z=16&output=embed"></iframe>
+
+<p>Your presence and blessings will make our day even more special 💖</p>
+<p>With love and regards,<br>Verma Family</p>
+
+</section>
+
+<!-- FINAL THANK YOU -->
+<div class="footer">
+<h2>Thank You for Coming ❤️</h2>
+</div>
+
+<script>
+
+/* HEARTS */
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(3+Math.random()*5)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),8000);
+},500);
+
+/* COUNTDOWN */
+let weddingDate = new Date("Feb 4, 2027 00:00:00").getTime();
+
+setInterval(()=>{
+let now = new Date().getTime();
+let d = weddingDate - now;
+
+let days = Math.floor(d/(1000*60*60*24));
+let hours = Math.floor((d%(1000*60*60*24))/(1000*60*60));
+let minutes = Math.floor((d%(1000*60*60))/(1000*60));
+let seconds = Math.floor((d%(1000*60))/1000);
+
+document.getElementById("countdown").innerHTML =
+days+"d "+hours+"h "+minutes+"m "+seconds+"s";
+
+},1000);
+
+/* SCRATCH */
+let canvas = document.getElementById("scratch");
+let ctx = canvas.getContext("2d");
+
+canvas.width=300;
+canvas.height=150;
+
+ctx.fillStyle="#bbb";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.globalCompositeOperation="destination-out";
+
+let isDrawing=false;
+
+canvas.addEventListener("mousedown",()=>isDrawing=true);
+canvas.addEventListener("mouseup",()=>isDrawing=false);
+
+canvas.addEventListener("mousemove",(e)=>{
+if(!isDrawing)return;
+let rect=canvas.getBoundingClientRect();
+let x=e.clientX-rect.left;
+let y=e.clientY-rect.top;
+ctx.beginPath();
+ctx.arc(x,y,18,0,Math.PI*2);
+ctx.fill();
+});
+
+/* MOBILE */
+canvas.addEventListener("touchstart",()=>isDrawing=true);
+canvas.addEventListener("touchend",()=>isDrawing=false);
+
+canvas.addEventListener("touchmove",(e)=>{
+e.preventDefault();
+let rect=canvas.getBoundingClientRect();
+let x=e.touches[0].clientX-rect.left;
+let y=e.touches[0].clientY-rect.top;
+ctx.beginPath();
+ctx.arc(x,y,18,0,Math.PI*2);
+ctx.fill();
+});
+
+</script>
+
+</body>
+</html>
