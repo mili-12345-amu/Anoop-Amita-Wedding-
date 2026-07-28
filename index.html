@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anoop ❤️ Amita Wedding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(135deg,#ffe4ec,#f3e5ff,#fff);
+color:#444;
+}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+background:linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)),
+url('https://images.unsplash.com/photo-1529634896711-8c3c43c8c0c8');
+background-size:cover;
+background-position:center;
+}
+
+.hero h1{
+font-size:3rem;
+font-family:'Playfair Display',serif;
+color:#b76e79;
+}
+
+.hero p{
+margin-top:10px;
+font-size:1.2rem;
+}
+
+/* SECTION */
+.section{
+padding:60px 20px;
+text-align:center;
+}
+
+.section h2{
+font-family:'Playfair Display';
+color:#b76e79;
+margin-bottom:20px;
+}
+
+/* GLASS CARD */
+.card{
+background:rgba(255,255,255,0.6);
+backdrop-filter:blur(10px);
+padding:20px;
+margin:20px auto;
+border-radius:15px;
+max-width:800px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* EVENTS */
+.events{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.event{
+background:#fff;
+border-radius:15px;
+padding:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.event:hover{
+transform:translateY(-10px);
+}
+
+/* COUNTDOWN */
+.countdown{
+font-size:2rem;
+margin-top:20px;
+color:#b76e79;
+}
+
+/* SCRATCH REAL */
+.scratch-box{
+position:relative;
+width:260px;
+height:120px;
+margin:20px auto;
+border-radius:15px;
+overflow:hidden;
+}
+
+.scratch-text{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+color:#b76e79;
+font-weight:bold;
+background:#fff;
+z-index:1;
+}
+
+#scratchCanvas{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#c0c0c0;
+z-index:2;
+}
+
+/* FORM */
+input,select,textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:10px;
+border:1px solid #ddd;
+}
+
+button{
+padding:10px 20px;
+border:none;
+background:#b76e79;
+color:#fff;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+padding:20px;
+background:#b76e79;
+color:#fff;
+text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+<h1>Anoop ❤️ Amita</h1>
+<p>We’re getting married!</p>
+</div>
+
+<!-- LOVE STORY -->
+<div class="section">
+<h2>Our Love Story</h2>
+<div class="card">
+<p>From strangers to soulmates, our journey has been filled with love, laughter, and unforgettable memories. Now we begin forever together.</p>
+</div>
+</div>
+
+<!-- EVENTS -->
+<div class="section">
+<h2>Wedding Events</h2>
+<div class="events">
+
+<div class="event">
+<h3>Haldi</h3>
+<p>3 Feb 2027</p>
+<p>Yellow vibes & happiness</p>
+</div>
+
+<div class="event">
+<h3>Mehendi</h3>
+<p>3 Feb 2027</p>
+<p>Green elegance & designs</p>
+</div>
+
+<div class="event">
+<h3>Sangeet</h3>
+<p>2 Feb 2027</p>
+<p>Dance & celebration night</p>
+</div>
+
+<div class="event">
+<h3>Wedding</h3>
+<p>4 Feb 2027</p>
+<p>Forever begins ❤️</p>
+</div>
+
+</div>
+</div>
+
+<!-- COUNTDOWN -->
+<div class="section">
+<h2>Countdown</h2>
+<div class="countdown" id="countdown"></div>
+</div>
+
+<!-- SCRATCH CARD -->
+<div class="section">
+<h2>Scratch to Reveal Date</h2>
+
+<div class="scratch-box">
+<div class="scratch-text">🎉 4 February 2027 🎉</div>
+<canvas id="scratchCanvas"></canvas>
+</div>
+
+</div>
+
+<!-- RSVP -->
+<div class="section">
+<h2>RSVP</h2>
+<div class="card">
+<input placeholder="Your Name">
+<input placeholder="Phone Number">
+<input placeholder="Number of Guests">
+<select>
+<option>Will you attend?</option>
+<option>Yes</option>
+<option>No</option>
+</select>
+<select>
+<option>Meal Preference</option>
+<option>Veg</option>
+<option>Non-Veg</option>
+</select>
+<textarea placeholder="Message"></textarea>
+<button>Submit</button>
+</div>
+</div>
+
+<!-- VENUE -->
+<div class="section">
+<h2>Venue</h2>
+<div class="card">
+<p>Bramha Married Lawn</p>
+<iframe 
+src="https://maps.google.com/maps?q=bramha%20marriage%20lawn&t=&z=13&ie=UTF8&iwloc=&output=embed"
+width="100%" height="200"></iframe>
+<br><br>
+<a href="https://maps.google.com/?q=bramha marriage lawn" target="_blank">
+<button>Get Directions</button>
+</a>
+</div>
+</div>
+
+<!-- FAMILY -->
+<div class="section">
+<h2>Meet the Family</h2>
+<div class="card">
+<p>With blessings of our loving families ❤️</p>
+</div>
+</div>
+
+<!-- FAQ -->
+<div class="section">
+<h2>FAQs</h2>
+<div class="card">
+<p><b>Dress Code?</b> Traditional / Ethnic</p>
+<p><b>Timing?</b> Evening events</p>
+</div>
+</div>
+
+<!-- THANK YOU -->
+<div class="section">
+<h2>Thank You</h2>
+<div class="card">
+<p>We can’t wait to celebrate with you ❤️</p>
+</div>
+</div>
+
+<footer>
+Made with ❤️ for Anoop & Amita
+</footer>
+
+<script>
+
+/* COUNTDOWN */
+var countDownDate = new Date("Feb 4, 2027 00:00:00").getTime();
+
+setInterval(function() {
+var now = new Date().getTime();
+var distance = countDownDate - now;
+
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+var seconds = Math.floor((distance % (1000*60)) / 1000);
+
+document.getElementById("countdown").innerHTML =
+days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+}, 1000);
+
+/* REAL SCRATCH */
+const canvas = document.getElementById("scratchCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = 260;
+canvas.height = 120;
+
+ctx.fillStyle = "#C0C0C0";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.globalCompositeOperation = "destination-out";
+
+let isDrawing = false;
+
+canvas.addEventListener("mousedown", ()=> isDrawing = true);
+canvas.addEventListener("mouseup", ()=> isDrawing = false);
+canvas.addEventListener("mousemove", scratch);
+
+canvas.addEventListener("touchstart", ()=> isDrawing = true);
+canvas.addEventListener("touchend", ()=> isDrawing = false);
+canvas.addEventListener("touchmove", scratch);
+
+function scratch(e){
+if(!isDrawing) return;
+
+let rect = canvas.getBoundingClientRect();
+
+let x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+let y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+
+ctx.beginPath();
+ctx.arc(x,y,18,0,Math.PI*2);
+ctx.fill();
+}
+
+</script>
+
+</body>
+  </html>
