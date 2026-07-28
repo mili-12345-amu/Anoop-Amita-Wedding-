@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anoop ❤️ Amita Wedding</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff0f5;
+    text-align: center;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(45deg, #ff4d6d, #ff758f);
+    color: white;
+    padding: 40px 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+/* Cards */
+.card {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    width: 85%;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Scratch Box */
+#scratchBox {
+    width: 250px;
+    height: 120px;
+    background: #bbb;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#weddingDate {
+    display: none;
+    font-size: 22px;
+    color: #ff4d6d;
+    margin-top: 10px;
+}
+
+/* Button */
+button {
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e63950;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="header">
+    <h1>Anoop ❤️ Amita</h1>
+    <p>Wedding Celebration</p>
+</div>
+
+<!-- Sangeet -->
+<div class="card">
+    <h2>🎵 Sangeet Night</h2>
+    <p>Date: <b>2 February 2027</b></p>
+    <img src="https://images.unsplash.com/photo-1519741497674-611481863552" alt="Sangeet">
+</div>
+
+<!-- Haldi -->
+<div class="card">
+    <h2>🌼 Haldi Ceremony</h2>
+    <p>Date: <b>3 February 2027</b></p>
+    <img src="https://images.unsplash.com/photo-1602233158242-3ba0ac4d2167" alt="Haldi">
+</div>
+
+<!-- Mehendi -->
+<div class="card">
+    <h2>🌿 Mehendi Ceremony</h2>
+    <p>Date: <b>3 February 2027</b></p>
+    <img src="https://images.unsplash.com/photo-1597256202465-1a4f6b7c0d6d" alt="Mehendi">
+</div>
+
+<!-- Scratch Reveal -->
+<div class="card">
+    <h2>💍 Wedding Date (Scratch to Reveal)</h2>
+
+    <div id="scratchBox" onclick="revealDate()">
+        Scratch Here ✨
+    </div>
+
+    <div id="weddingDate">
+        🎉 4 February 2027 🎉
+    </div>
+</div>
+
+<!-- Venue -->
+<div class="card">
+    <h2>📍 Venue</h2>
+    <p><b>Brahma Marriage Lawn, Barail Rd, Barabanki (225001)</b></p>
+
+    <iframe 
+        src="https://maps.google.com/maps?q=Brahma%20Marriage%20Lawn%20Barail%20Rd%20Barabanki&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        width="100%" height="300" style="border:0; border-radius:10px;">
+    </iframe>
+</div>
+
+<!-- Button -->
+<br>
+<button onclick="showMessage()">Click for Invitation 💌</button>
+
+<script>
+function revealDate() {
+    document.getElementById("scratchBox").style.display = "none";
+    document.getElementById("weddingDate").style.display = "block";
+}
+
+function showMessage() {
+    alert("You are invited to Anoop ❤️ Amita Wedding!");
+}
+</script>
+
+</body>
+</html>
