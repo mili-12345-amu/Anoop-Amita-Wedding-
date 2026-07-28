@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anoop ❤️ Amita Wedding</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #ffe4ec, #fff);
+    text-align: center;
+}
+
+/* Header */
+.header {
+    padding: 50px 20px;
+    background: linear-gradient(45deg, #ff4d6d, #ff758f);
+    color: white;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 40px;
+}
+
+/* Card */
+.card {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 420px;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+/* Images */
+.card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+/* Scratch Canvas */
+#scratchCanvas {
+    margin-top: 20px;
+    border-radius: 12px;
+}
+
+/* Hidden date */
+#weddingDate {
+    position: relative;
+    top: -80px;
+    font-size: 22px;
+    color: #ff4d6d;
+    font-weight: bold;
+}
+
+/* Button */
+button {
+    background: linear-gradient(45deg, #ff4d6d, #ff758f);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Anoop ❤️ Amita</h1>
+    <p>Wedding Invitation 💖</p>
+</div>
+
+<!-- SANGEET -->
+<div class="card">
+    <h2>🎵 Sangeet</h2>
+    <p><b>2 February 2027</b></p>
+    <img src="https://picsum.photos/400/250?random=10">
+</div>
+
+<!-- HALDI -->
+<div class="card">
+    <h2>🌼 Haldi</h2>
+    <p><b>3 February 2027</b></p>
+    <img src="https://picsum.photos/400/250?random=20">
+</div>
+
+<!-- MEHENDI -->
+<div class="card">
+    <h2>🌿 Mehendi</h2>
+    <p><b>3 February 2027</b></p>
+    <img src="https://picsum.photos/400/250?random=30">
+</div>
+
+<!-- SCRATCH -->
+<div class="card">
+    <h2>💍 Wedding Date (Scratch)</h2>
+
+    <canvas id="scratchCanvas" width="260" height="120"></canvas>
+
+    <div id="weddingDate">🎉 4 February 2027 🎉</div>
+</div>
+
+<!-- VENUE -->
+<div class="card">
+    <h2>📍 Venue</h2>
+    <p>Brahma Marriage Lawn, Barail Rd, Barabanki (225001)</p>
+
+    <iframe 
+    src="https://maps.google.com/maps?q=Brahma%20Marriage%20Lawn%20Barail%20Rd%20Barabanki&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    width="100%" height="250" style="border:0;border-radius:12px;">
+    </iframe>
+</div>
+
+<br>
+<button onclick="alert('Welcome to Anoop ❤️ Amita Wedding 💖')">
+Open Invitation 💌
+</button>
+
+<script>
+const canvas = document.getElementById("scratchCanvas");
+const ctx = canvas.getContext("2d");
+
+ctx.fillStyle = "#aaa";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.fillStyle = "#000";
+ctx.font = "16px Arial";
+ctx.fillText("Scratch Here ✨", 60, 60);
+
+let isDrawing = false;
+
+canvas.addEventListener("mousedown", () => isDrawing = true);
+canvas.addEventListener("mouseup", () => isDrawing = false);
+canvas.addEventListener("mousemove", scratch);
+
+canvas.addEventListener("touchstart", () => isDrawing = true);
+canvas.addEventListener("touchend", () => isDrawing = false);
+canvas.addEventListener("touchmove", scratch);
+
+function scratch(e) {
+    if (!isDrawing) return;
+
+    let rect = canvas.getBoundingClientRect();
+    let x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    let y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.beginPath();
+    ctx.arc(x, y, 18, 0, Math.PI * 2);
+    ctx.fill();
+}
+</script>
+
+</body>
+</html>
