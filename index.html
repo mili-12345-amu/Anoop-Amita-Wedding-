@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,331 +9,59 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+html{scroll-behavior:smooth}
+body{background:linear-gradient(135deg,#ffe4ec,#f3e5ff,#fff);overflow-x:hidden;color:#553044}
+.hero{min-height:100vh;padding:30px 15px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(rgba(255,255,255,.48),rgba(255,255,255,.65)),url("https://images.unsplash.com/photo-1529634896711-8c3c43c8c0c8");background-size:cover;background-position:center}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(38px,8vw,65px);color:#c2185b;text-shadow:0 2px 12px white}
+.hero p{margin-top:12px;font-size:18px;color:#71334e}
+.hero .flower{font-size:35px;margin-bottom:15px}
+.section{padding:60px 18px;text-align:center}
+h2{font-family:'Playfair Display',serif;color:#c2185b;font-size:30px;margin-bottom:25px}
+.timeline{max-width:650px;margin:auto}
+.step{background:rgba(255,255,255,.78);margin:16px 0;padding:20px;border-radius:16px;box-shadow:0 5px 18px rgba(180,70,120,.10)}
+.events{max-width:850px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:25px}
+.event{background:rgba(255,255,255,.85);padding:15px;border-radius:18px;box-shadow:0 6px 20px rgba(150,50,100,.12)}
+.event h3{color:#c2185b;margin:10px 0;font-family:'Playfair Display',serif;font-size:22px}
+.event img{width:100%;height:240px;object-fit:cover;border-radius:13px}
+.event p{font-size:14px;margin:8px 0}
+#countdown{font-size:clamp(22px,5vw,35px);color:#d63384;font-weight:600;margin-top:15px}
+.scratch-card{width:min(320px,90vw);height:160px;margin:20px auto;position:relative;border-radius:15px;overflow:hidden;box-shadow:0 5px 18px rgba(150,50,100,.18);touch-action:none}
+.scratch-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;color:#c2185b;font-family:'Playfair Display',serif;font-size:27px;font-weight:bold;z-index:1}
+.scratch-text small{font-family:'Poppins',sans-serif;font-size:13px;margin-top:8px}
+#scratch{position:absolute;inset:0;width:100%;height:100%;z-index:2;cursor:pointer;touch-action:none}
+#scratch.scratched{display:none}
+.rsvp{max-width:500px;margin:auto;background:rgba(255,255,255,.85);padding:22px;border-radius:18px}
+.rsvp input,.rsvp select,.rsvp textarea{width:100%;padding:12px;margin:9px 0;border:1px solid #e7b6ca;border-radius:9px;font-size:14px;background:white}
+.rsvp button{background:#c2185b;color:white;border:none;border-radius:25px;padding:12px 30px;font-size:15px;cursor:pointer;margin-top:10px}
+.venue{max-width:850px;margin:auto}
+.venue iframe{width:100%;height:320px;border:0;border-radius:15px}
+.directions{display:inline-block;margin:15px;padding:12px 25px;border-radius:25px;background:#c2185b;color:white;text-decoration:none}
+.footer{padding:35px 15px 45px;text-align:center;color:#8e315a}
+.family-highlight{width:min(440px,92%);margin:22px auto 24px;padding:24px 48px;position:relative;border:2px solid #d5a64f;border-radius:20px;background:linear-gradient(135deg,#fffdf5 0%,#fff0ce 48%,#fffaf0 100%);box-shadow:0 0 0 4px rgba(213,166,79,.12),0 0 18px rgba(196,145,55,.32),0 9px 24px rgba(115,55,45,.14),inset 0 0 15px rgba(255,255,255,.95)}
+.family-highlight::before,.family-highlight::after{content:"✿";position:absolute;top:50%;transform:translateY(-50%);color:#bd8735;font-size:27px;text-shadow:0 1px 5px rgba(190,135,53,.25)}
+.family-highlight::before{left:13px}
+.family-highlight::after{right:13px}
+.family-heading{color:#89513f;font-family:'Playfair Display',serif;font-size:16px;margin-bottom:8px}
+.family-name{color:#a34762;font-family:'Playfair Display',serif;font-size:clamp(24px,5vw,31px);font-weight:700;text-shadow:0 2px 8px rgba(210,155,90,.28);letter-spacing:.4px}
+.thankyou-banner{display:inline-block;margin-top:3px;padding:13px 30px;color:#fff8ed;background:linear-gradient(135deg,#783149,#a94e69,#783149);border:1px solid #e3bd76;border-radius:30px;box-shadow:0 5px 17px rgba(120,45,70,.25),inset 0 1px 5px rgba(255,255,255,.15);font-family:'Playfair Display',serif;font-size:19px}
+.heart{position:fixed;top:-30px;z-index:999;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
 
-html { scroll-behavior: smooth; }
-
-body {
-  background: linear-gradient(135deg,#ffe4ec,#f3e5ff,#fff);
-  overflow-x: hidden;
-  color: #553044;
-}
-
-.hero {
-  min-height: 100vh;
-  padding: 30px 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background:
-    linear-gradient(rgba(255,255,255,.48),rgba(255,255,255,.65)),
-    url("https://images.unsplash.com/photo-1529634896711-8c3c43c8c0c8");
-  background-size: cover;
-  background-position: center;
-}
-
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(38px,8vw,65px);
-  color: #c2185b;
-  text-shadow: 0 2px 12px white;
-}
-
-.hero p {
-  margin-top: 12px;
-  font-size: 18px;
-  color: #71334e;
-}
-
-.hero .flower {
-  font-size: 35px;
-  margin-bottom: 15px;
-}
-
-.section {
-  padding: 60px 18px;
-  text-align: center;
-}
-
-h2 {
-  font-family: 'Playfair Display', serif;
-  color: #c2185b;
-  font-size: 30px;
-  margin-bottom: 25px;
-}
-
-.timeline {
-  max-width: 650px;
-  margin: auto;
-}
-
-.step {
-  background: rgba(255,255,255,.78);
-  margin: 16px 0;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 5px 18px rgba(180,70,120,.10);
-}
-
-.events {
-  max-width: 850px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
-  gap: 25px;
-}
-
-.event {
-  background: rgba(255,255,255,.85);
-  padding: 15px;
-  border-radius: 18px;
-  box-shadow: 0 6px 20px rgba(150,50,100,.12);
-}
-
-.event h3 {
-  color: #c2185b;
-  margin: 10px 0;
-  font-family: 'Playfair Display',serif;
-  font-size: 22px;
-}
-
-.event img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  border-radius: 13px;
-}
-
-.event p {
-  font-size: 14px;
-  margin: 8px 0;
-}
-
-#countdown {
-  font-size: clamp(22px,5vw,35px);
-  color: #d63384;
-  font-weight: 600;
-  margin-top: 15px;
-}
-
-.scratch-card {
-  width: min(320px,90vw);
-  height: 160px;
-  margin: 20px auto;
-  position: relative;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 5px 18px rgba(150,50,100,.18);
-  touch-action: none;
-}
-
-.scratch-text {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  color: #c2185b;
-  font-family: 'Playfair Display',serif;
-  font-size: 27px;
-  font-weight: bold;
-  z-index: 1;
-}
-
-.scratch-text small {
-  font-family: 'Poppins',sans-serif;
-  font-size: 13px;
-  margin-top: 8px;
-}
-
-#scratch {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  cursor: pointer;
-  touch-action: none;
-}
-
-#scratch.scratched { display: none; }
-
-.rsvp {
-  max-width: 500px;
-  margin: auto;
-  background: rgba(255,255,255,.85);
-  padding: 22px;
-  border-radius: 18px;
-}
-
-.rsvp input,
-.rsvp select,
-.rsvp textarea {
-  width: 100%;
-  padding: 12px;
-  margin: 9px 0;
-  border: 1px solid #e7b6ca;
-  border-radius: 9px;
-  font-size: 14px;
-  background: white;
-}
-
-.rsvp button {
-  background: #c2185b;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  padding: 12px 30px;
-  font-size: 15px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.venue {
-  max-width: 850px;
-  margin: auto;
-}
-
-.venue iframe {
-  width: 100%;
-  height: 320px;
-  border: 0;
-  border-radius: 15px;
-}
-
-.directions {
-  display: inline-block;
-  margin: 15px;
-  padding: 12px 25px;
-  border-radius: 25px;
-  background: #c2185b;
-  color: white;
-  text-decoration: none;
-}
-
-.footer {
-  padding: 35px 15px 45px;
-  text-align: center;
-  color: #8e315a;
-}
-
-.footer h2 { margin-bottom: 10px; }
-
-/* Verma Family premium cream-and-gold highlight */
-.family-highlight {
-  width: min(440px, 92%);
-  margin: 22px auto 24px;
-  padding: 24px 48px;
-  position: relative;
-  border: 2px solid #d5a64f;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #fffdf5 0%, #fff0ce 48%, #fffaf0 100%);
-  box-shadow:
-    0 0 0 4px rgba(213,166,79,.12),
-    0 0 18px rgba(196,145,55,.32),
-    0 9px 24px rgba(115,55,45,.14),
-    inset 0 0 15px rgba(255,255,255,.95);
-}
-
-.family-highlight::before,
-.family-highlight::after {
-  content: "✿";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #bd8735;
-  font-size: 27px;
-  text-shadow: 0 1px 5px rgba(190,135,53,.25);
-}
-
-.family-highlight::before { left: 13px; }
-.family-highlight::after { right: 13px; }
-
-.family-heading {
-  color: #89513f;
-  font-family: 'Playfair Display', serif;
-  font-size: 16px;
-  margin-bottom: 8px;
-}
-
-.family-name {
-  color: #a34762;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(24px, 5vw, 31px);
-  font-weight: 700;
-  text-shadow: 0 2px 8px rgba(210,155,90,.28);
-  letter-spacing: .4px;
-}
-
-.thankyou-banner {
-  display: inline-block;
-  margin-top: 3px;
-  padding: 13px 30px;
-  color: #fff8ed;
-  background: linear-gradient(135deg, #783149, #a94e69, #783149);
-  border: 1px solid #e3bd76;
-  border-radius: 30px;
-  box-shadow: 0 5px 17px rgba(120,45,70,.25), inset 0 1px 5px rgba(255,255,255,.15);
-  font-family: 'Playfair Display', serif;
-  font-size: 19px;
-}
-
-/* Falling hearts */
-.heart {
-  position: fixed;
-  top: -30px;
-  z-index: 999;
-  pointer-events: none;
-  animation: fall linear forwards;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-/* Hidden music iframe */
-#musicFrame {
-  position: fixed;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-  left: -10px;
-  bottom: -10px;
-}
-
-@media(max-width:600px) {
-  .section { padding: 45px 14px; }
-  .hero p { font-size: 16px; }
-  .event img { height: 220px; }
-}
+/* MUSIC BUTTON */
+.music-button{position:fixed;bottom:18px;right:16px;z-index:1000;background:linear-gradient(135deg,#783149,#c2185b);color:white;border:2px solid #e3bd76;border-radius:30px;padding:12px 18px;font-size:14px;box-shadow:0 4px 15px rgba(120,45,70,.3);cursor:pointer}
+#musicFrame{position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;left:-10px;bottom:-10px}
+@media(max-width:600px){.section{padding:45px 14px}.hero p{font-size:16px}.event img{height:220px}}
 </style>
 </head>
 
 <body>
 
-<!-- Aaj Sajeya - Goldie Sohel (official Saregama Punjabi music video).
-     Browsers may block sound autoplay; music starts on the visitor's first tap/click. -->
-<iframe
-  id="musicFrame"
-  title="Aaj Sajeya by Goldie Sohel"
-  allow="autoplay; encrypted-media"
-  src="about:blank">
-</iframe>
+<!-- OFFICIAL AAJ SAJEYA AUDIO VIDEO -->
+<iframe id="musicFrame" title="Aaj Sajeya by Goldie Sohel" allow="autoplay; encrypted-media" src="about:blank"></iframe>
 
-<!-- HERO -->
+<button class="music-button" id="musicButton" type="button">♫ Play Wedding Music</button>
+
 <section class="hero">
   <div class="flower">🌸 💕 🌸</div>
   <h1>Anoop ❤️ Amita</h1>
@@ -340,7 +69,6 @@ h2 {
   <p>Two hearts, one beautiful journey 💍</p>
 </section>
 
-<!-- LOVE STORY -->
 <section class="section">
   <h2>Our Love Story 💕</h2>
   <div class="timeline">
@@ -352,54 +80,39 @@ h2 {
   </div>
 </section>
 
-<!-- WEDDING EVENTS -->
 <section class="section">
   <h2>Wedding Celebrations 🌸</h2>
   <div class="events">
 
-    <!-- SANGEET -->
     <div class="event">
       <h3>🎶 Sangeet</h3>
       <p>2 February 2027</p>
-      <img
-        src="https://images.pexels.com/photos/36248933/pexels-photo-36248933/free-photo-of-elegant-indian-wedding-dance-celebration.jpeg?auto=compress&dpr=1&h=750&w=1260"
-        alt="Indian wedding couple dancing at Sangeet"
-        loading="lazy">
+      <img src="https://images.pexels.com/photos/36248933/pexels-photo-36248933/free-photo-of-elegant-indian-wedding-dance-celebration.jpeg?auto=compress&dpr=1&h=750&w=1260" alt="Indian wedding couple dancing at Sangeet" loading="lazy">
       <p>Glamorous outfits, music, dance and celebrations ✨</p>
     </div>
 
-    <!-- HALDI -->
     <div class="event">
       <h3>💛 Haldi</h3>
       <p>3 February 2027</p>
-      <img
-        src="https://images.pexels.com/photos/33078524/pexels-photo-33078524.jpeg?cs=srgb&dl=pexels-amodita-s-frame-485464413-33078524.jpg&fm=jpg"
-        alt="Indian Haldi ceremony with yellow outfits and flowers"
-        loading="lazy">
+      <img src="https://images.pexels.com/photos/33078524/pexels-photo-33078524.jpeg?cs=srgb&dl=pexels-amodita-s-frame-485464413-33078524.jpg&fm=jpg" alt="Indian Haldi ceremony with yellow outfits and flowers" loading="lazy">
       <p>Yellow outfits, floral jewellery and happy moments 🌼</p>
     </div>
 
-    <!-- MEHENDI -->
     <div class="event">
       <h3>💚 Mehendi</h3>
       <p>3 February 2027</p>
-      <img
-        src="https://images.pexels.com/photos/38773211/pexels-photo-38773211.jpeg?auto=compress&cs=tinysrgb&w=1200"
-        alt="Indian wedding Mehendi and henna ceremony"
-        loading="lazy">
+      <img src="https://images.pexels.com/photos/38773211/pexels-photo-38773211.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Indian wedding Mehendi and henna ceremony" loading="lazy">
       <p>Green outfits, beautiful henna and mehendi decorations 🌿</p>
     </div>
 
   </div>
 </section>
 
-<!-- COUNTDOWN -->
 <section class="section">
   <h2>Countdown to Wedding 💍</h2>
   <div id="countdown">Loading...</div>
 </section>
 
-<!-- SCRATCH CARD -->
 <section class="section">
   <h2>Scratch to Reveal the Special Date 🎁</h2>
   <div class="scratch-card">
@@ -411,7 +124,6 @@ h2 {
   </div>
 </section>
 
-<!-- RSVP -->
 <section class="section">
   <h2>RSVP 💌</h2>
   <form class="rsvp" id="rsvpForm">
@@ -434,7 +146,6 @@ h2 {
   </form>
 </section>
 
-<!-- VENUE -->
 <section class="section">
   <h2>Wedding Venue 📍</h2>
   <div class="venue">
@@ -444,24 +155,10 @@ h2 {
       Barel, Uttar Pradesh 225001
     </p>
     <br>
-    <iframe
-      src="https://maps.google.com/maps?q=Brahma%20Marriage%20Lawn%2C%20Barail%20Rd%2C%20Barail%2C%20Barabanki%2C%20Uttar%20Pradesh%20225001&z=16&output=embed"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      allowfullscreen>
-    </iframe>
-    <a
-      class="directions"
-      href="https://maps.app.goo.gl/uUHXEbQr5JoL5CmA9"
-      target="_blank"
-      rel="noopener">
-      Get Directions 📍
-    </a>
-    <p>
-      Your presence and blessings will make our day even more special 💖
-    </p>
+    <iframe src="https://maps.google.com/maps?q=Brahma%20Marriage%20Lawn%2C%20Barail%20Rd%2C%20Barail%2C%20Barabanki%2C%20Uttar%20Pradesh%20225001&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    <a class="directions" href="https://maps.app.goo.gl/uUHXEbQr5JoL5CmA9" target="_blank" rel="noopener">Get Directions 📍</a>
+    <p>Your presence and blessings will make our day even more special 💖</p>
 
-    <!-- UPDATED VERMA FAMILY PLAQUE -->
     <div class="family-highlight">
       <div class="family-heading">With love and regards,</div>
       <div class="family-name">🌸 Verma Family 🌸</div>
@@ -469,7 +166,6 @@ h2 {
   </div>
 </section>
 
-<!-- UPDATED THANK YOU BANNER -->
 <div class="footer">
   <div class="thankyou-banner">Thank You for Coming ❤️</div>
 </div>
@@ -477,151 +173,145 @@ h2 {
 <script>
 
 /* FALLING HEARTS */
-setInterval(function() {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.textContent = ["💖","💕","💗","❤️"][Math.floor(Math.random()*4)];
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (15 + Math.random()*15) + "px";
-  heart.style.animationDuration = (4 + Math.random()*4) + "s";
+setInterval(function(){
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.textContent=["💖","💕","💗","❤️"][Math.floor(Math.random()*4)];
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(15+Math.random()*15)+"px";
+  heart.style.animationDuration=(4+Math.random()*4)+"s";
   document.body.appendChild(heart);
-  setTimeout(function() { heart.remove(); }, 8500);
-}, 600);
+  setTimeout(()=>heart.remove(),8500);
+},600);
+
 
 /* COUNTDOWN */
-const weddingDate = new Date("2027-02-04T00:00:00").getTime();
+const weddingDate=new Date("2027-02-04T00:00:00").getTime();
 
-function updateCountdown() {
-  const now = new Date().getTime();
-  const distance = weddingDate - now;
-  const countdown = document.getElementById("countdown");
+function updateCountdown(){
+  const distance=weddingDate-new Date().getTime();
+  const countdown=document.getElementById("countdown");
 
-  if (distance <= 0) {
-    countdown.textContent = "The Wedding Day is Here! ❤️";
+  if(distance<=0){
+    countdown.textContent="The Wedding Day is Here! ❤️";
     return;
   }
 
-  const days = Math.floor(distance / (1000*60*60*24));
-  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-  const seconds = Math.floor((distance % (1000*60)) / 1000);
+  const days=Math.floor(distance/(1000*60*60*24));
+  const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+  const seconds=Math.floor((distance%(1000*60))/1000);
 
-  countdown.textContent =
-    days + " Days " + hours + " Hours " +
-    minutes + " Minutes " + seconds + " Seconds";
+  countdown.textContent=days+" Days "+hours+" Hours "+minutes+" Minutes "+seconds+" Seconds";
 }
-
 updateCountdown();
-setInterval(updateCountdown, 1000);
+setInterval(updateCountdown,1000);
 
-/* SCRATCH CARD - DESKTOP AND MOBILE */
-const canvas = document.getElementById("scratch");
-const ctx = canvas.getContext("2d");
-const scratchCard = document.querySelector(".scratch-card");
 
-let drawing = false;
-let revealed = false;
+/* SCRATCH CARD */
+const canvas=document.getElementById("scratch");
+const ctx=canvas.getContext("2d");
+const scratchCard=document.querySelector(".scratch-card");
+let drawing=false;
+let revealed=false;
 
-function setupScratch() {
-  const rect = scratchCard.getBoundingClientRect();
-  const ratio = window.devicePixelRatio || 1;
+function setupScratch(){
+  const rect=scratchCard.getBoundingClientRect();
+  const ratio=window.devicePixelRatio||1;
 
-  canvas.width = rect.width * ratio;
-  canvas.height = rect.height * ratio;
-  canvas.style.width = rect.width + "px";
-  canvas.style.height = rect.height + "px";
+  canvas.width=rect.width*ratio;
+  canvas.height=rect.height*ratio;
+  canvas.style.width=rect.width+"px";
+  canvas.style.height=rect.height+"px";
 
-  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-  ctx.globalCompositeOperation = "source-over";
+  ctx.setTransform(ratio,0,0,ratio,0,0);
+  ctx.globalCompositeOperation="source-over";
 
-  const gradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
-  gradient.addColorStop(0, "#d7a6bb");
-  gradient.addColorStop(1, "#a95b7d");
+  const gradient=ctx.createLinearGradient(0,0,rect.width,rect.height);
+  gradient.addColorStop(0,"#d7a6bb");
+  gradient.addColorStop(1,"#a95b7d");
 
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, rect.width, rect.height);
-  ctx.fillStyle = "#ffffff";
-  ctx.font = "bold 19px Poppins";
-  ctx.textAlign = "center";
-  ctx.fillText("SCRATCH HERE ✨", rect.width/2, rect.height/2);
-  ctx.globalCompositeOperation = "destination-out";
+  ctx.fillStyle=gradient;
+  ctx.fillRect(0,0,rect.width,rect.height);
+  ctx.fillStyle="#ffffff";
+  ctx.font="bold 19px Poppins";
+  ctx.textAlign="center";
+  ctx.fillText("SCRATCH HERE ✨",rect.width/2,rect.height/2);
+  ctx.globalCompositeOperation="destination-out";
 }
 
-function scratchAt(x, y) {
-  if (revealed) return;
-  const rect = canvas.getBoundingClientRect();
+function scratchAt(x,y){
+  if(revealed)return;
+  const rect=canvas.getBoundingClientRect();
   ctx.beginPath();
-  ctx.arc(x - rect.left, y - rect.top, 23, 0, Math.PI*2);
+  ctx.arc(x-rect.left,y-rect.top,23,0,Math.PI*2);
   ctx.fill();
   checkScratchProgress();
 }
 
-function checkScratchProgress() {
-  const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-  let clearPixels = 0;
-  const totalPixels = pixels.length / 4;
+function checkScratchProgress(){
+  const pixels=ctx.getImageData(0,0,canvas.width,canvas.height).data;
+  let clearPixels=0;
+  const totalPixels=pixels.length/4;
 
-  for (let i = 3; i < pixels.length; i += 4) {
-    if (pixels[i] < 50) clearPixels++;
+  for(let i=3;i<pixels.length;i+=4){
+    if(pixels[i]<50)clearPixels++;
   }
 
-  if (clearPixels / totalPixels > 0.42) {
-    revealed = true;
+  if(clearPixels/totalPixels>0.42){
+    revealed=true;
     canvas.classList.add("scratched");
-    document.querySelector(".scratch-text").innerHTML =
+    document.querySelector(".scratch-text").innerHTML=
       "4 February 2027 💍<small>A beautiful beginning ❤️</small>";
   }
 }
 
-canvas.addEventListener("pointerdown", function(e) {
-  if (revealed) return;
-  drawing = true;
+canvas.addEventListener("pointerdown",function(e){
+  if(revealed)return;
+  drawing=true;
   canvas.setPointerCapture(e.pointerId);
-  scratchAt(e.clientX, e.clientY);
+  scratchAt(e.clientX,e.clientY);
 });
 
-canvas.addEventListener("pointermove", function(e) {
-  if (!drawing || revealed) return;
-  scratchAt(e.clientX, e.clientY);
+canvas.addEventListener("pointermove",function(e){
+  if(!drawing||revealed)return;
+  scratchAt(e.clientX,e.clientY);
 });
 
-canvas.addEventListener("pointerup", function() { drawing = false; });
-canvas.addEventListener("pointercancel", function() { drawing = false; });
+canvas.addEventListener("pointerup",()=>drawing=false);
+canvas.addEventListener("pointercancel",()=>drawing=false);
 setupScratch();
 
+
 /* RSVP FORM */
-document.getElementById("rsvpForm").addEventListener("submit", function(e) {
+document.getElementById("rsvpForm").addEventListener("submit",function(e){
   e.preventDefault();
   alert("Thank you for your response! ❤️");
   this.reset();
 });
 
-/* AAJ SAJEYA - GOLDIE SOHEL
-   Official Saregama Punjabi video ID: lFml8NrHoeo.
-   Try autoplay; if the browser blocks it, start on the visitor's first tap. */
-const musicFrame = document.getElementById("musicFrame");
-const aajSajeyaURL =
-  "https://www.youtube.com/embed/lFml8NrHoeo?autoplay=1&loop=1&playlist=lFml8NrHoeo&playsinline=1";
 
-let musicStarted = false;
+/* OFFICIAL AAJ SAJEYA - GOLDIE SOHEL
+   Saregama Music audio-video */
+const musicFrame=document.getElementById("musicFrame");
+const musicButton=document.getElementById("musicButton");
 
-function startWeddingMusic() {
-  if (musicStarted) return;
-  musicStarted = true;
-  musicFrame.src = aajSajeyaURL;
+const aajSajeyaURL=
+  "https://www.youtube.com/embed/sxcSqaIQs4M?autoplay=1&loop=1&playlist=sxcSqaIQs4M&playsinline=1";
+
+let musicStarted=false;
+
+function startWeddingMusic(){
+  if(musicStarted)return;
+
+  musicStarted=true;
+  musicFrame.src=aajSajeyaURL;
+  musicButton.textContent="♫ Wedding Music Playing";
 }
 
-window.addEventListener("load", function() {
-  // Autoplay is attempted; browser policy may require a user gesture.
-  startWeddingMusic();
-});
-
-// If autoplay was blocked, reload the player after the first user interaction.
-document.addEventListener("pointerdown", function() {
-  musicFrame.src = aajSajeyaURL;
-}, { once: true });
+musicButton.addEventListener("click",startWeddingMusic);
 
 </script>
 
 </body>
-  </html>
+</html>
