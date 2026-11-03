@@ -1,281 +1,356 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>Anoop ❤️ Amita Wedding</title>  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">  <style>  
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}  
-html{scroll-behavior:smooth}  
-body{background:linear-gradient(135deg,#ffe4ec,#f3e5ff,#fff);overflow-x:hidden;color:#553044}  
-.hero{min-height:100vh;padding:30px 15px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(rgba(255,255,255,.48),rgba(255,255,255,.65)),url("https://images.unsplash.com/photo-1529634896711-8c3c43c8c0c8");background-size:cover;background-position:center}  
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(38px,8vw,65px);color:#c2185b;text-shadow:0 2px 12px white}  
-.hero p{margin-top:12px;font-size:18px;color:#71334e}  
-.hero .flower{font-size:35px;margin-bottom:15px}  
-.section{padding:60px 18px;text-align:center}  
-h2{font-family:'Playfair Display',serif;color:#c2185b;font-size:30px;margin-bottom:25px}  
-.timeline{max-width:650px;margin:auto}  
-.step{background:rgba(255,255,255,.78);margin:16px 0;padding:20px;border-radius:16px;box-shadow:0 5px 18px rgba(180,70,120,.10)}  
-.events{max-width:850px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:25px}  
-.event{background:rgba(255,255,255,.85);padding:15px;border-radius:18px;box-shadow:0 6px 20px rgba(150,50,100,.12)}  
-.event h3{color:#c2185b;margin:10px 0;font-family:'Playfair Display',serif;font-size:22px}  
-.event img{width:100%;height:240px;object-fit:cover;border-radius:13px}  
-.event p{font-size:14px;margin:8px 0}  
-#countdown{font-size:clamp(22px,5vw,35px);color:#d63384;font-weight:600;margin-top:15px}  
-.scratch-card{width:min(320px,90vw);height:160px;margin:20px auto;position:relative;border-radius:15px;overflow:hidden;box-shadow:0 5px 18px rgba(150,50,100,.18);touch-action:none}  
-.scratch-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;color:#c2185b;font-family:'Playfair Display',serif;font-size:27px;font-weight:bold;z-index:1}  
-.scratch-text small{font-family:'Poppins',sans-serif;font-size:13px;margin-top:8px}  
-#scratch{position:absolute;inset:0;width:100%;height:100%;z-index:2;cursor:pointer;touch-action:none}  
-#scratch.scratched{display:none}  
-.rsvp{max-width:500px;margin:auto;background:rgba(255,255,255,.85);padding:22px;border-radius:18px}  
-.rsvp input,.rsvp select,.rsvp textarea{width:100%;padding:12px;margin:9px 0;border:1px solid #e7b6ca;border-radius:9px;font-size:14px;background:white}  
-.rsvp button{background:#c2185b;color:white;border:none;border-radius:25px;padding:12px 30px;font-size:15px;cursor:pointer;margin-top:10px}  
-.venue{max-width:850px;margin:auto}  
-.venue iframe{width:100%;height:320px;border:0;border-radius:15px}  
-.directions{display:inline-block;margin:15px;padding:12px 25px;border-radius:25px;background:#c2185b;color:white;text-decoration:none}  
-.footer{padding:35px 15px 45px;text-align:center;color:#8e315a}  
-.family-highlight{width:min(440px,92%);margin:22px auto 24px;padding:24px 48px;position:relative;border:2px solid #d5a64f;border-radius:20px;background:linear-gradient(135deg,#fffdf5 0%,#fff0ce 48%,#fffaf0 100%);box-shadow:0 0 0 4px rgba(213,166,79,.12),0 0 18px rgba(196,145,55,.32),0 9px 24px rgba(115,55,45,.14),inset 0 0 15px rgba(255,255,255,.95)}  
-.family-highlight::before,.family-highlight::after{content:"✿";position:absolute;top:50%;transform:translateY(-50%);color:#bd8735;font-size:27px;text-shadow:0 1px 5px rgba(190,135,53,.25)}  
-.family-highlight::before{left:13px}  
-.family-highlight::after{right:13px}  
-.family-heading{color:#89513f;font-family:'Playfair Display',serif;font-size:16px;margin-bottom:8px}  
-.family-name{color:#a34762;font-family:'Playfair Display',serif;font-size:clamp(24px,5vw,31px);font-weight:700;text-shadow:0 2px 8px rgba(210,155,90,.28);letter-spacing:.4px}  
-.thankyou-banner{display:inline-block;margin-top:3px;padding:13px 30px;color:#fff8ed;background:linear-gradient(135deg,#783149,#a94e69,#783149);border:1px solid #e3bd76;border-radius:30px;box-shadow:0 5px 17px rgba(120,45,70,.25),inset 0 1px 5px rgba(255,255,255,.15);font-family:'Playfair Display',serif;font-size:19px}  
-.heart{position:fixed;top:-30px;z-index:999;pointer-events:none;animation:fall linear forwards}  
-@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}  
-  
-/* MUSIC BUTTON */  
-.music-button{position:fixed;bottom:18px;right:16px;z-index:1000;background:linear-gradient(135deg,#783149,#c2185b);color:white;border:2px solid #e3bd76;border-radius:30px;padding:12px 18px;font-size:14px;box-shadow:0 4px 15px rgba(120,45,70,.3);cursor:pointer}  
-#musicFrame{position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;left:-10px;bottom:-10px}  
-@media(max-width:600px){.section{padding:45px 14px}.hero p{font-size:16px}.event img{height:220px}}  
-</style>  </head>  <body>  <!-- YOUR YOUTUBE SHORTS REEL -->  <iframe id="musicFrame" title="Wedding Music Reel" allow="autoplay; encrypted-media; picture-in-picture" src="about:blank"></iframe>  <button class="music-button" id="musicButton" type="button">♫ Play Wedding Music</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anoop ❤️ Amita Wedding</title>
 
-<section class="hero">  
-  <div class="flower">🌸 💕 🌸</div>  
-  <h1>Anoop ❤️ Amita</h1>  
-  <p>We're getting married!</p>  
-  <p>Two hearts, one beautiful journey 💍</p>  
-</section>  <section class="section">  
-  <h2>Our Love Story 💕</h2>  
-  <div class="timeline">  
-    <div class="step">Once we were strangers, living in different worlds.</div>  
-    <div class="step">Then came a moment when our paths crossed.</div>  
-    <div class="step">A simple hello turned into endless conversations.</div>  
-    <div class="step">Slowly, friendship turned into love.</div>  
-    <div class="step">And now, we promise forever ❤️</div>  
-  </div>  
-</section>  <section class="section">  
-  <h2>Wedding Celebrations 🌸</h2>  
-  <div class="events">  <div class="event">  
-  <h3>🎶 Sangeet</h3>  
-  <p>2 February 2027</p>  
-  <img src="https://images.pexels.com/photos/36248933/pexels-photo-36248933/free-photo-of-elegant-indian-wedding-dance-celebration.jpeg?auto=compress&dpr=1&h=750&w=1260" alt="Indian wedding couple dancing at Sangeet" loading="lazy">  
-  <p>Glamorous outfits, music, dance and celebrations ✨</p>  
-</div>  
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<div class="event">  
-  <h3>💛 Haldi</h3>  
-  <p>3 February 2027</p>  
-  <img src="https://images.pexels.com/photos/33078524/pexels-photo-33078524.jpeg?cs=srgb&dl=pexels-amodita-s-frame-485464413-33078524.jpg&fm=jpg" alt="Indian Haldi ceremony with yellow outfits and flowers" loading="lazy">  
-  <p>Yellow outfits, floral jewellery and happy moments 🌼</p>  
-</div>  
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+html{scroll-behavior:smooth}
+body{background:linear-gradient(135deg,#ffe4ec,#f3e5ff,#fff);overflow-x:hidden;color:#553044}
+.hero{min-height:100vh;padding:30px 15px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(rgba(255,255,255,.48),rgba(255,255,255,.65)),url("https://images.unsplash.com/photo-1529634896711-8c3c43c8c0c8");background-size:cover;background-position:center}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(38px,8vw,65px);color:#c2185b;text-shadow:0 2px 12px white}
+.hero p{margin-top:12px;font-size:18px;color:#71334e}
+.hero .flower{font-size:35px;margin-bottom:15px}
+.section{padding:60px 18px;text-align:center}
+h2{font-family:'Playfair Display',serif;color:#c2185b;font-size:30px;margin-bottom:25px}
+.timeline{max-width:650px;margin:auto}
+.step{background:rgba(255,255,255,.78);margin:16px 0;padding:20px;border-radius:16px;box-shadow:0 5px 18px rgba(180,70,120,.10)}
+.events{max-width:850px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:25px}
+.event{background:rgba(255,255,255,.85);padding:15px;border-radius:18px;box-shadow:0 6px 20px rgba(150,50,100,.12)}
+.event h3{color:#c2185b;margin:10px 0;font-family:'Playfair Display',serif;font-size:22px}
+.event img,.event-art{width:100%;height:240px;object-fit:cover;border-radius:13px;display:block}
+.event p{font-size:14px;margin:8px 0}
 
-<div class="event">  
-  <h3>💚 Mehendi</h3>  
-  <p>3 February 2027</p>  
-  <img src="https://images.pexels.com/photos/38773211/pexels-photo-38773211.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Indian wedding Mehendi and henna ceremony" loading="lazy">  
-  <p>Green outfits, beautiful henna and mehendi decorations 🌿</p>  
+/* ANIMATED COUPLE ART */
+.event-art .couple{transform-box:fill-box;transform-origin:center bottom;animation:coupleDance 2s ease-in-out infinite alternate}
+.event-art .sparkle{animation:twinkle 1.4s ease-in-out infinite alternate}
+.event-art .float{animation:float 2.5s ease-in-out infinite alternate}
+@keyframes coupleDance{from{transform:rotate(-2deg) translateY(0)}to{transform:rotate(2deg) translateY(-5px)}}
+@keyframes twinkle{from{opacity:1}to{opacity:.3}}
+@keyframes float{from{transform:translateY(0)}to{transform:translateY(-7px)}}
+
+#countdown{font-size:clamp(22px,5vw,35px);color:#d63384;font-weight:600;margin-top:15px}
+.scratch-card{width:min(320px,90vw);height:160px;margin:20px auto;position:relative;border-radius:15px;overflow:hidden;box-shadow:0 5px 18px rgba(150,50,100,.18);touch-action:none}
+.scratch-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;color:#c2185b;font-family:'Playfair Display',serif;font-size:27px;font-weight:bold;z-index:1}
+.scratch-text small{font-family:'Poppins',sans-serif;font-size:13px;margin-top:8px}
+#scratch{position:absolute;inset:0;width:100%;height:100%;z-index:2;cursor:pointer;touch-action:none}
+#scratch.scratched{display:none}
+.rsvp{max-width:500px;margin:auto;background:rgba(255,255,255,.85);padding:22px;border-radius:18px}
+.rsvp input,.rsvp select,.rsvp textarea{width:100%;padding:12px;margin:9px 0;border:1px solid #e7b6ca;border-radius:9px;font-size:14px;background:white}
+.rsvp button{background:#c2185b;color:white;border:none;border-radius:25px;padding:12px 30px;font-size:15px;cursor:pointer;margin-top:10px}
+.venue{max-width:850px;margin:auto}
+.venue iframe{width:100%;height:320px;border:0;border-radius:15px}
+.directions{display:inline-block;margin:15px;padding:12px 25px;border-radius:25px;background:#c2185b;color:white;text-decoration:none}
+.footer{padding:35px 15px 45px;text-align:center;color:#8e315a}
+.family-highlight{width:min(440px,92%);margin:22px auto 24px;padding:24px 48px;position:relative;border:2px solid #d5a64f;border-radius:20px;background:linear-gradient(135deg,#fffdf5 0%,#fff0ce 48%,#fffaf0 100%);box-shadow:0 0 0 4px rgba(213,166,79,.12),0 0 18px rgba(196,145,55,.32),0 9px 24px rgba(115,55,45,.14),inset 0 0 15px rgba(255,255,255,.95)}
+.family-highlight::before,.family-highlight::after{content:"✿";position:absolute;top:50%;transform:translateY(-50%);color:#bd8735;font-size:27px;text-shadow:0 1px 5px rgba(190,135,53,.25)}
+.family-highlight::before{left:13px}
+.family-highlight::after{right:13px}
+.family-heading{color:#89513f;font-family:'Playfair Display',serif;font-size:16px;margin-bottom:8px}
+.family-name{color:#a34762;font-family:'Playfair Display',serif;font-size:clamp(24px,5vw,31px);font-weight:700;text-shadow:0 2px 8px rgba(210,155,90,.28);letter-spacing:.4px}
+.thankyou-banner{display:inline-block;margin-top:3px;padding:13px 30px;color:#fff8ed;background:linear-gradient(135deg,#783149,#a94e69,#783149);border:1px solid #e3bd76;border-radius:30px;box-shadow:0 5px 17px rgba(120,45,70,.25),inset 0 1px 5px rgba(255,255,255,.15);font-family:'Playfair Display',serif;font-size:19px}
+.heart{position:fixed;top:-30px;z-index:999;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
+
+/* MUSIC BUTTON */
+.music-button{position:fixed;bottom:18px;right:16px;z-index:1000;background:linear-gradient(135deg,#783149,#c2185b);color:white;border:2px solid #e3bd76;border-radius:30px;padding:12px 18px;font-size:14px;box-shadow:0 4px 15px rgba(120,45,70,.3);cursor:pointer}
+#musicFrame{position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;left:-10px;bottom:-10px}
+@media(max-width:600px){.section{padding:45px 14px}.hero p{font-size:16px}.event img,.event-art{height:220px}}
+</style>
+</head>
+
+<body>
+
+<!-- YOUR YOUTUBE SHORTS REEL -->
+<iframe id="musicFrame" title="Wedding Music Reel" allow="autoplay; encrypted-media; picture-in-picture" src="about:blank"></iframe>
+<button class="music-button" id="musicButton" type="button">♫ Play Wedding Music</button>
+
+<section class="hero">
+  <div class="flower">🌸 💕 🌸</div>
+  <h1>Anoop ❤️ Amita</h1>
+  <p>We're getting married!</p>
+  <p>Two hearts, one beautiful journey 💍</p>
+</section>
+
+<section class="section">
+  <h2>Our Love Story 💕</h2>
+  <div class="timeline">
+    <div class="step">Once we were strangers, living in different worlds.</div>
+    <div class="step">Then came a moment when our paths crossed.</div>
+    <div class="step">A simple hello turned into endless conversations.</div>
+    <div class="step">Slowly, friendship turned into love.</div>
+    <div class="step">And now, we promise forever ❤️</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Wedding Celebrations 🌸</h2>
+  <div class="events">
+
+    <!-- SANGEET -->
+    <div class="event">
+      <h3>🎶 Sangeet</h3>
+      <p>2 February 2027</p>
+
+      <svg class="event-art" viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated cartoon bride and groom dancing at Sangeet">
+        <defs>
+          <linearGradient id="sbg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#24133f"/>
+            <stop offset="1" stop-color="#a33b83"/>
+          </linearGradient>
+          <linearGradient id="sbride" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffacd2"/>
+            <stop offset="1" stop-color="#c52c82"/>
+          </linearGradient>
+        </defs>
+        <rect width="600" height="360" fill="url(#sbg)"/>
+        <circle cx="300" cy="165" r="130" fill="#fff" opacity=".07"/>
+        <g class="sparkle" fill="#ffe89b">
+          <path d="M70 45l8 24 24 8-24 8-8 24-8-24-24-8 24-8z"/>
+          <path d="M520 45l8 24 24 8-24 8-8 24-8-24-24-8 24-8z"/>
+          <path d="M300 20l7 19 19 7-19 7-7 19-7-19-19-7 19-7z"/>
+          <circle cx="130" cy="160" r="5"/><circle cx="470" cy="160" r="5"/>
+        </g>
+
+        <!-- Groom -->
+        <g class="couple">
+          <path d="M165 110Q165 65 215 65Q260 70 255 120Z" fill="#29202b"/>
+          <circle cx="210" cy="120" r="37" fill="#b97855"/>
+          <path d="M174 112Q180 75 216 82Q244 80 250 111Q220 94 174 112Z" fill="#241a28"/>
+          <circle cx="198" cy="120" r="3.5"/><circle cx="223" cy="120" r="3.5"/>
+          <path d="M201 139Q211 147 222 138" fill="none" stroke="#783c35" stroke-width="3" stroke-linecap="round"/>
+          <path d="M172 163Q210 145 248 163L270 275H150Z" fill="#187f91" stroke="#f5d28a" stroke-width="4"/>
+          <path d="M210 160V270M178 190H245" stroke="#f6d88d" stroke-width="4"/>
+          <path d="M177 176L133 125M245 176L279 128" stroke="#b97855" stroke-width="16" stroke-linecap="round"/>
+          <path d="M180 273L175 322M240 273L247 322" stroke="#29203c" stroke-width="18" stroke-linecap="round"/>
+          <path d="M175 322L158 328M247 322L265 328" stroke="#f4d39b" stroke-width="9" stroke-linecap="round"/>
+        </g>
+
+        <!-- Bride -->
+        <g class="couple">
+          <path d="M340 110Q340 65 390 65Q435 70 430 120Z" fill="#24172d"/>
+          <circle cx="385" cy="120" r="36" fill="#c98260"/>
+          <path d="M350 110Q355 76 388 80Q420 77 425 111Q395 92 350 110Z" fill="#24172d"/>
+          <circle cx="373" cy="120" r="3.5"/><circle cx="398" cy="120" r="3.5"/>
+          <path d="M374 139Q385 148 398 138" fill="none" stroke="#8b3445" stroke-width="3" stroke-linecap="round"/>
+          <path d="M350 90Q385 45 420 90" fill="none" stroke="#f6d26e" stroke-width="6"/>
+          <circle cx="385" cy="77" r="7" fill="#f7d76c"/>
+          <path d="M350 160Q385 143 420 160L470 280Q385 315 300 280Z" fill="url(#sbride)" stroke="#f7d47a" stroke-width="4"/>
+          <path d="M385 160V285M340 205H430M325 245H445" stroke="#ffe0a0" stroke-width="3"/>
+          <path d="M350 175L310 125M418 175L455 125" stroke="#c98260" stroke-width="15" stroke-linecap="round"/>
+          <path d="M360 280L354 322M410 280L418 322" stroke="#c98260" stroke-width="12" stroke-linecap="round"/>
+        </g>
+        <text x="300" y="345" fill="#ffe8b5" font-size="17" text-anchor="middle" font-family="Poppins">Let's Dance Together ✨</text>
+      </svg>
+
+      <p>Glamorous outfits, music, dance and celebrations ✨</p>
+    </div>
+
+    <!-- HALDI -->
+    <div class="event">
+      <h3>💛 Haldi</h3>
+      <p>3 February 2027</p>
+
+      <svg class="event-art" viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated cartoon bride and groom in yellow Haldi outfits">
+        <defs>
+          <linearGradient id="hbg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#fff0a8"/>
+            <stop offset="1" stop-color="#f5b83d"/>
+          </linearGradient>
+          <linearGradient id="hyellow" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#fff18c"/>
+            <stop offset="1" stop-color="#eaa51e"/>
+          </linearGradient>
+        </defs>
+        <rect width="600" height="360" fill="url(#hbg)"/>
+        <circle cx="300" cy="160" r="130" fill="#fff" opacity=".25"/>
+        <g class="sparkle" fill="#fff">
+          <path d="M80 45l8 20 20 8-20 8-8 20-8-20-20-8 20-8z"/>
+          <path d="M520 45l8 20 20 8-20 8-8 20-8-20-20-8 20-8z"/>
+          <circle cx="130" cy="150" r="6"/><circle cx="470" cy="150" r="6"/>
+        </g>
+        <g class="float" fill="#fff8d8" stroke="#d8a12b" stroke-width="2">
+          <circle cx="85" cy="270" r="17"/><circle cx="115" cy="285" r="12"/>
+          <circle cx="500" cy="275" r="17"/><circle cx="470" cy="290" r="12"/>
+        </g>
+
+        <!-- Groom -->
+        <g class="couple">
+          <path d="M165 110Q165 65 215 65Q260 70 255 120Z" fill="#302329"/>
+          <circle cx="210" cy="120" r="37" fill="#b97855"/>
+          <path d="M174 112Q180 75 216 82Q244 80 250 111Q220 94 174 112Z" fill="#241a28"/>
+          <circle cx="198" cy="120" r="3.5"/><circle cx="223" cy="120" r="3.5"/>
+          <path d="M201 139Q211 147 222 138" fill="none" stroke="#783c35" stroke-width="3"/>
+          <path d="M172 163Q210 145 248 163L270 275H150Z" fill="#f3c536" stroke="#fff2a6" stroke-width="5"/>
+          <path d="M210 160V270" stroke="#fff3ae" stroke-width="4"/>
+          <path d="M177 176L135 125M245 176L280 130" stroke="#b97855" stroke-width="16" stroke-linecap="round"/>
+          <path d="M180 273L175 322M240 273L247 322" stroke="#fff0bd" stroke-width="18" stroke-linecap="round"/>
+          <path d="M175 322L158 328M247 322L265 328" stroke="#70452d" stroke-width="9" stroke-linecap="round"/>
+        </g>
+
+        <!-- Bride -->
+        <g class="couple">
+          <path d="M340 110Q340 65 390 65Q435 70 430 120Z" fill="#302329"/>
+          <circle cx="385" cy="120" r="36" fill="#c98260"/>
+          <path d="M350 110Q355 76 388 80Q420 77 425 111Q395 92 350 110Z" fill="#24172d"/>
+          <circle cx="373" cy="120" r="3.5"/><circle cx="398" cy="120" r="3.5"/>
+          <path d="M374 139Q385 148 398 138" fill="none" stroke="#8b3445" stroke-width="3"/>
+          <path d="M350 90Q385 45 420 90" fill="none" stroke="#fff0a0" stroke-width="6"/>
+          <circle cx="385" cy="77" r="7" fill="#fff0a0"/>
+          <path d="M350 160Q385 143 420 160L470 280Q385 315 300 280Z" fill="url(#hyellow)" stroke="#fff1a2" stroke-width="5"/>
+          <path d="M385 160V285M340 205H430M325 245H445" stroke="#fff9cf" stroke-width="3"/>
+          <path d="M350 175L310 125M418 175L455 125" stroke="#c98260" stroke-width="15" stroke-linecap="round"/>
+          <path d="M360 280L354 322M410 280L418 322" stroke="#c98260" stroke-width="12" stroke-linecap="round"/>
+          <g fill="#fff6cf">
+            <circle cx="350" cy="155" r="5"/><circle cx="365" cy="150" r="5"/><circle cx="400" cy="150" r="5"/><circle cx="415" cy="155" r="5"/>
+          </g>
+        </g>
+        <text x="300" y="345" fill="#805014" font-size="17" text-anchor="middle" font-family="Poppins">Haldi Celebration 🌼</text>
+      </svg>
+
+      <p>Yellow outfits, floral jewellery and happy moments 🌼</p>
+    </div>
+
+    <!-- MEHENDI -->
+    <div class="event">
+      <h3>💚 Mehendi</h3>
+      <p>3 February 2027</p>
+
+      <svg class="event-art" viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated cartoon bride and groom in green Mehendi outfits">
+        <defs>
+          <linearGradient id="mbg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#d8f2b7"/>
+            <stop offset="1" stop-color="#579b62"/>
+          </linearGradient>
+          <linearGradient id="mgreen" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#9bdc91"/>
+            <stop offset="1" stop-color="#267347"/>
+          </linearGradient>
+        </defs>
+        <rect width="600" height="360" fill="url(#mbg)"/>
+        <circle cx="300" cy="160" r="130" fill="#fff" opacity=".2"/>
+        <g class="sparkle" fill="#fff5c5">
+          <path d="M80 45l8 20 20 8-20 8-8 20-8-20-20-8 20-8z"/>
+          <path d="M520 45l8 20 20 8-20 8-8 20-8-20-20-8 20-8z"/>
+          <circle cx="130" cy="150" r="6"/><circle cx="470" cy="150" r="6"/>
+        </g>
+
+        <!-- Decorative leaves -->
+        <g class="float" fill="#236c42">
+          <path d="M55 265Q25 220 55 195Q80 230 55 265Z"/>
+          <path d="M545 265Q575 220 545 195Q520 230 545 265Z"/>
+          <path d="M55 265L55 205M545 265L545 205" stroke="#f5e5a0" stroke-width="2"/>
+        </g>
+
+        <!-- Groom -->
+        <g class="couple">
+          <path d="M165 110Q165 65 215 65Q260 70 255 120Z" fill="#302329"/>
+          <circle cx="210" cy="120" r="37" fill="#b97855"/>
+          <path d="M174 112Q180 75 216 82Q244 80 250 111Q220 94 174 112Z" fill="#241a28"/>
+          <circle cx="198" cy="120" r="3.5"/><circle cx="223" cy="120" r="3.5"/>
+          <path d="M201 139Q211 147 222 138" fill="none" stroke="#783c35" stroke-width="3"/>
+          <path d="M172 163Q210 145 248 163L270 275H150Z" fill="#226d48" stroke="#f2d98c" stroke-width="4"/>
+          <path d="M210 160V270M178 205H245" stroke="#e9d48c" stroke-width="3"/>
+          <path d="M177 176L135 125M245 176L280 130" stroke="#b97855" stroke-width="16" stroke-linecap="round"/>
+          <path d="M180 273L175 322M240 273L247 322" stroke="#294e3a" stroke-width="18" stroke-linecap="round"/>
+          <path d="M175 322L158 328M247 322L265 328" stroke="#f4d39b" stroke-width="9" stroke-linecap="round"/>
+        </g>
+
+        <!-- Bride -->
+        <g class="couple">
+          <path d="M340 110Q340 65 390 65Q435 70 430 120Z" fill="#302329"/>
+          <circle cx="385" cy="120" r="36" fill="#c98260"/>
+          <path d="M350 110Q355 76 388 80Q420 77 425 111Q395 92 350 110Z" fill="#24172d"/>
+          <circle cx="373" cy="120" r="3.5"/><circle cx="398" cy="120" r="3.5"/>
+          <path d="M374 139Q385 148 398 138" fill="none" stroke="#8b3445" stroke-width="3"/>
+          <path d="M350 90Q385 45 420 90" fill="none" stroke="#f6d26e" stroke-width="6"/>
+          <circle cx="385" cy="77" r="7" fill="#f7d76c"/>
+          <path d="M350 160Q385 143 420 160L470 280Q385 315 300 280Z" fill="url(#mgreen)" stroke="#f5d98b" stroke-width="4"/>
+          <path d="M385 160V285M340 205H430M325 245H445" stroke="#e8efb0" stroke-width="3"/>
+          <path d="M350 175L310 125M418 175L455 125" stroke="#c98260" stroke-width="15" stroke-linecap="round"/>
+          <path d="M360 280L354 322M410 280L418 322" stroke="#c98260" stroke-width="12" stroke-linecap="round"/>
+          <g fill="none" stroke="#17633d" stroke-width="3">
+            <path d="M330 235q15 -20 25 0q-10 15 -25 0z"/>
+            <path d="M415 235q15 -20 25 0q-10 15 -25 0z"/>
+            <path d="M365 265q20 -25 40 0"/>
+          </g>
+        </g>
+        <text x="300" y="345" fill="#fff9d9" font-size="17" text-anchor="middle" font-family="Poppins">Mehendi Moments 🌿</text>
+      </svg>
+
+      <p>Green outfits, beautiful henna and mehendi decorations 🌿</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <h2>Countdown to Wedding 💍</h2>
+  <div id="countdown">Loading...</div>
+</section>
+
+<section class="section">
+  <h2>Scratch to Reveal the Special Date 🎁</h2>
+  <div class="scratch-card">
+    <div class="scratch-text">
+      💖 Surprise! 💖
+      <small>Keep scratching to reveal</small>
+    </div>
+    <canvas id="scratch"></canvas>
+  </div>
+</section>
+
+<section class="section">
+  <h2>RSVP 💌</h2>
+  <form class="rsvp" id="rsvpForm">
+    <input type="text" placeholder="Guest Name" required>
+    <input type="tel" placeholder="Phone Number" required>
+    <input type="number" placeholder="Number of Guests" min="1" max="20" required>
+    <select required>
+      <option value="">Will you attend?</option>
+      <option>Yes, I'll be there</option>
+      <option>Sorry, can't attend</option>
+    </select>
+    <select required>
+      <option value="">Meal Preference</option>
+      <option>Vegetarian</option>
+      <option>Non-Vegetarian</option>
+      <option>Jain</option>
+    </select>
+    <textarea rows="4" placeholder="Your lovely message"></textarea>
+    <button type="submit">Submit RSVP ❤️</button>
+  </form>
+</section>
+
+<section class="section">
+  <h2>Wedding Venue 📍</h2>
+  <div class="venue">
+    <p>
+      <strong>Brahma Marriage Lawn</strong><br>
+      Barail Rd, Barail, Barabanki,<br>
+      Barel, Uttar Pradesh 225001
+    </p>
+    <br>
+    <iframe src="https://maps.google.com/maps?q=Brahma%20Marriage%20Lawn%2C%20Barail%20Rd%2C%20Barail%2C%20Barabanki%2C%20Uttar%20Pradesh%20225001&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    <a class="directions" href="https://maps.app.goo.gl/uUHXEbQr5JoL5CmA9" target="_blank" rel="noopener">Get Directions 📍</a>
+    <p>Your presence and blessings will make our day even more special 💖</p>
+
+    <div class="family-highlight">
+      <div class="family-heading">With love and regards,</div>
+      <div class="family-name">🌸 Verma Family 🌸</div>
+    </div>
+  </div>
+</section>
+
+<div class="footer">
+  <div class="thankyou-banner">Thank You for Coming ❤️</div>
 </div>
 
-  </div>  
-</section>  <section class="section">  
-  <h2>Countdown to Wedding 💍</h2>  
-  <div id="countdown">Loading...</div>  
-</section>  <section class="section">  
-  <h2>Scratch to Reveal the Special Date 🎁</h2>  
-  <div class="scratch-card">  
-    <div class="scratch-text">  
-      💖 Surprise! 💖  
-      <small>Keep scratching to reveal</small>  
-    </div>  
-    <canvas id="scratch"></canvas>  
-  </div>  
-</section>  <section class="section">  
-  <h2>RSVP 💌</h2>  
-  <form class="rsvp" id="rsvpForm">  
-    <input type="text" placeholder="Guest Name" required>  
-    <input type="tel" placeholder="Phone Number" required>  
-    <input type="number" placeholder="Number of Guests" min="1" max="20" required>  
-    <select required>  
-      <option value="">Will you attend?</option>  
-      <option>Yes, I'll be there</option>  
-      <option>Sorry, can't attend</option>  
-    </select>  
-    <select required>  
-      <option value="">Meal Preference</option>  
-      <option>Vegetarian</option>  
-      <option>Non-Vegetarian</option>  
-      <option>Jain</option>  
-    </select>  
-    <textarea rows="4" placeholder="Your lovely message"></textarea>  
-    <button type="submit">Submit RSVP ❤️</button>  
-  </form>  
-</section>  <section class="section">  
-  <h2>Wedding Venue 📍</h2>  
-  <div class="venue">  
-    <p>  
-      <strong>Brahma Marriage Lawn</strong><br>  
-      Barail Rd, Barail, Barabanki,<br>  
-      Barel, Uttar Pradesh 225001  
-    </p>  
-    <br>  
-    <iframe src="https://maps.google.com/maps?q=Brahma%20Marriage%20Lawn%2C%20Barail%20Rd%2C%20Barail%2C%20Barabanki%2C%20Uttar%20Pradesh%20225001&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>  
-    <a class="directions" href="https://maps.app.goo.gl/uUHXEbQr5JoL5CmA9" target="_blank" rel="noopener">Get Directions 📍</a>  
-    <p>Your presence and blessings will make our day even more special 💖</p>  <div class="family-highlight">  
-  <div class="family-heading">With love and regards,</div>  
-  <div class="family-name">🌸 Verma Family 🌸</div>  
-</div>
+<script>
 
-  </div>  
-</section>  <div class="footer">  
-  <div class="thankyou-banner">Thank You for Coming ❤️</div>  
-</div>  <script>  
-  
-/* FALLING HEARTS */  
-setInterval(function(){  
-  const heart=document.createElement("div");  
-  heart.className="heart";  
-  heart.textContent=["💖","💕","💗","❤️"][Math.floor(Math.random()*4)];  
-  heart.style.left=Math.random()*100+"vw";  
-  heart.style.fontSize=(15+Math.random()*15)+"px";  
-  heart.style.animationDuration=(4+Math.random()*4)+"s";  
-  document.body.appendChild(heart);  
-  setTimeout(()=>heart.remove(),8500);  
-},600);  
-  
-  
-/* COUNTDOWN */  
-const weddingDate=new Date("2027-02-04T00:00:00").getTime();  
-  
-function updateCountdown(){  
-  const distance=weddingDate-new Date().getTime();  
-  const countdown=document.getElementById("countdown");  
-  
-  if(distance<=0){  
-    countdown.textContent="The Wedding Day is Here! ❤️";  
-    return;  
-  }  
-  
-  const days=Math.floor(distance/(1000*60*60*24));  
-  const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));  
-  const minutes=Math.floor((distance%(1000*60*60))/(1000*60));  
-  const seconds=Math.floor((distance%(1000*60))/1000);  
-  
-  countdown.textContent=days+" Days "+hours+" Hours "+minutes+" Minutes "+seconds+" Seconds";  
-}  
-updateCountdown();  
-setInterval(updateCountdown,1000);  
-  
-  
-/* SCRATCH CARD */  
-const canvas=document.getElementById("scratch");  
-const ctx=canvas.getContext("2d");  
-const scratchCard=document.querySelector(".scratch-card");  
-let drawing=false;  
-let revealed=false;  
-  
-function setupScratch(){  
-  const rect=scratchCard.getBoundingClientRect();  
-  const ratio=window.devicePixelRatio||1;  
-  
-  canvas.width=rect.width*ratio;  
-  canvas.height=rect.height*ratio;  
-  canvas.style.width=rect.width+"px";  
-  canvas.style.height=rect.height+"px";  
-  
-  ctx.setTransform(ratio,0,0,ratio,0,0);  
-  ctx.globalCompositeOperation="source-over";  
-  
-  const gradient=ctx.createLinearGradient(0,0,rect.width,rect.height);  
-  gradient.addColorStop(0,"#d7a6bb");  
-  gradient.addColorStop(1,"#a95b7d");  
-  
-  ctx.fillStyle=gradient;  
-  ctx.fillRect(0,0,rect.width,rect.height);  
-  ctx.fillStyle="#ffffff";  
-  ctx.font="bold 19px Poppins";  
-  ctx.textAlign="center";  
-  ctx.fillText("SCRATCH HERE ✨",rect.width/2,rect.height/2);  
-  ctx.globalCompositeOperation="destination-out";  
-}  
-  
-function scratchAt(x,y){  
-  if(revealed)return;  
-  const rect=canvas.getBoundingClientRect();  
-  ctx.beginPath();  
-  ctx.arc(x-rect.left,y-rect.top,23,0,Math.PI*2);  
-  ctx.fill();  
-  checkScratchProgress();  
-}  
-  
-function checkScratchProgress(){  
-  const pixels=ctx.getImageData(0,0,canvas.width,canvas.height).data;  
-  let clearPixels=0;  
-  const totalPixels=pixels.length/4;  
-  
-  for(let i=3;i<pixels.length;i+=4){  
-    if(pixels[i]<50)clearPixels++;  
-  }  
-  
-  if(clearPixels/totalPixels>0.42){  
-    revealed=true;  
-    canvas.classList.add("scratched");  
-    document.querySelector(".scratch-text").innerHTML=  
-      "4 February 2027 💍<small>A beautiful beginning ❤️</small>";  
-  }  
-}  
-  
-canvas.addEventListener("pointerdown",function(e){  
-  if(revealed)return;  
-  drawing=true;  
-  canvas.setPointerCapture(e.pointerId);  
-  scratchAt(e.clientX,e.clientY);  
-});  
-  
-canvas.addEventListener("pointermove",function(e){  
-  if(!drawing||revealed)return;  
-  scratchAt(e.clientX,e.clientY);  
-});  
-  
-canvas.addEventListener("pointerup",()=>drawing=false);  
-canvas.addEventListener("pointercancel",()=>drawing=false);  
-setupScratch();  
-  
-  
-/* RSVP FORM */  
-document.getElementById("rsvpForm").addEventListener("submit",function(e){  
-  e.preventDefault();  
-  alert("Thank you for your response! ❤️");  
-  this.reset();  
-});  
-  
-  
-/* YOUR YOUTUBE SHORTS REEL */  
-const musicFrame=document.getElementById("musicFrame");  
-const musicButton=document.getElementById("musicButton");  
-  
-const weddingMusicURL=  
-  "https://www.youtube.com/embed/J_IcCT3VRUo?autoplay=1&playsinline=1";  
-  
-let musicStarted=false;  
-  
-function startWeddingMusic(){  
-  if(musicStarted)return;  
-  
-  musicFrame.src=weddingMusicURL;  
-  musicStarted=true;  
-  musicButton.textContent="♫ Wedding Music Playing";  
-}  
-  
-musicButton.addEventListener("click",startWeddingMusic);  
-  
-</script>  </body>  
-    </html>
+/* FALLING HEARTS */
+setInt
