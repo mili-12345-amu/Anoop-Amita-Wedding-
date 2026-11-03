@@ -11,10 +11,12 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 html{scroll-behavior:smooth}
 body{background:linear-gradient(135deg,#ffe4ec,#f3e5ff,#fff);overflow-x:hidden;color:#553044}
+
 .hero{min-height:100vh;padding:30px 15px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(rgba(255,255,255,.48),rgba(255,255,255,.65)),url("https://images.unsplash.com/photo-1529634896711-8c3c43c8c0c8");background-size:cover;background-position:center}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(38px,8vw,65px);color:#c2185b;text-shadow:0 2px 12px white}
 .hero p{margin-top:12px;font-size:18px;color:#71334e}
 .hero .flower{font-size:35px;margin-bottom:15px}
+
 .section{padding:60px 18px;text-align:center}
 h2{font-family:'Playfair Display',serif;color:#c2185b;font-size:30px;margin-bottom:25px}
 .timeline{max-width:650px;margin:auto}
@@ -22,20 +24,32 @@ h2{font-family:'Playfair Display',serif;color:#c2185b;font-size:30px;margin-bott
 .events{max-width:850px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:25px}
 .event{background:rgba(255,255,255,.85);padding:15px;border-radius:18px;box-shadow:0 6px 20px rgba(150,50,100,.12)}
 .event h3{color:#c2185b;margin:10px 0;font-family:'Playfair Display',serif;font-size:22px}
-.event img{width:100%;height:240px;object-fit:cover;border-radius:13px}
+.event-art{width:100%;height:240px;display:block;border-radius:13px;overflow:hidden;background:#fff0f4}
 .event p{font-size:14px;margin:8px 0}
+
+/* ANIMATED COUPLE ILLUSTRATIONS */
+.event-art .float{animation:float 3s ease-in-out infinite;transform-origin:center}
+.event-art .sparkle{animation:twinkle 2s ease-in-out infinite alternate}
+.event-art .second{animation-delay:1s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes twinkle{from{opacity:.35}to{opacity:1}}
+
 #countdown{font-size:clamp(22px,5vw,35px);color:#d63384;font-weight:600;margin-top:15px}
+
 .scratch-card{width:min(320px,90vw);height:160px;margin:20px auto;position:relative;border-radius:15px;overflow:hidden;box-shadow:0 5px 18px rgba(150,50,100,.18);touch-action:none}
-.scratch-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;color:#c2185b;font-family:'Playfair Display',serif;font-size:27px;font-weight:bold;z-index:1}
+.scratch-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;color:#c2185b;font-family:'Playfair Display',serif;font-size:27px;font-weight:bold}
 .scratch-text small{font-family:'Poppins',sans-serif;font-size:13px;margin-top:8px}
 #scratch{position:absolute;inset:0;width:100%;height:100%;z-index:2;cursor:pointer;touch-action:none}
 #scratch.scratched{display:none}
+
 .rsvp{max-width:500px;margin:auto;background:rgba(255,255,255,.85);padding:22px;border-radius:18px}
 .rsvp input,.rsvp select,.rsvp textarea{width:100%;padding:12px;margin:9px 0;border:1px solid #e7b6ca;border-radius:9px;font-size:14px;background:white}
 .rsvp button{background:#c2185b;color:white;border:none;border-radius:25px;padding:12px 30px;font-size:15px;cursor:pointer;margin-top:10px}
+
 .venue{max-width:850px;margin:auto}
 .venue iframe{width:100%;height:320px;border:0;border-radius:15px}
 .directions{display:inline-block;margin:15px;padding:12px 25px;border-radius:25px;background:#c2185b;color:white;text-decoration:none}
+
 .footer{padding:35px 15px 45px;text-align:center;color:#8e315a}
 .family-highlight{width:min(440px,92%);margin:22px auto 24px;padding:24px 48px;position:relative;border:2px solid #d5a64f;border-radius:20px;background:linear-gradient(135deg,#fffdf5 0%,#fff0ce 48%,#fffaf0 100%);box-shadow:0 0 0 4px rgba(213,166,79,.12),0 0 18px rgba(196,145,55,.32),0 9px 24px rgba(115,55,45,.14),inset 0 0 15px rgba(255,255,255,.95)}
 .family-highlight::before,.family-highlight::after{content:"✿";position:absolute;top:50%;transform:translateY(-50%);color:#bd8735;font-size:27px;text-shadow:0 1px 5px rgba(190,135,53,.25)}
@@ -44,25 +58,25 @@ h2{font-family:'Playfair Display',serif;color:#c2185b;font-size:30px;margin-bott
 .family-heading{color:#89513f;font-family:'Playfair Display',serif;font-size:16px;margin-bottom:8px}
 .family-name{color:#a34762;font-family:'Playfair Display',serif;font-size:clamp(24px,5vw,31px);font-weight:700;text-shadow:0 2px 8px rgba(210,155,90,.28);letter-spacing:.4px}
 .thankyou-banner{display:inline-block;margin-top:3px;padding:13px 30px;color:#fff8ed;background:linear-gradient(135deg,#783149,#a94e69,#783149);border:1px solid #e3bd76;border-radius:30px;box-shadow:0 5px 17px rgba(120,45,70,.25),inset 0 1px 5px rgba(255,255,255,.15);font-family:'Playfair Display',serif;font-size:19px}
+
 .heart{position:fixed;top:-30px;z-index:999;pointer-events:none;animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
 
 .music-button{position:fixed;bottom:18px;right:16px;z-index:1000;background:linear-gradient(135deg,#783149,#c2185b);color:white;border:2px solid #e3bd76;border-radius:30px;padding:12px 18px;font-size:14px;box-shadow:0 4px 15px rgba(120,45,70,.3);cursor:pointer}
 #musicFrame{position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;left:-10px;bottom:-10px}
 
-@media(max-width:600px){.section{padding:45px 14px}.hero p{font-size:16px}.event img{height:220px}}
+@media(max-width:600px){
+.section{padding:45px 14px}
+.hero p{font-size:16px}
+.event-art{height:220px}
+}
 </style>
 </head>
 
 <body>
 
-<iframe id="musicFrame" title="Wedding Music"
-allow="autoplay; encrypted-media; picture-in-picture"
-src="about:blank"></iframe>
-
-<button class="music-button" id="musicButton" type="button">
-♫ Play Wedding Music
-</button>
+<iframe id="musicFrame" title="Wedding Music Reel" allow="autoplay; encrypted-media; picture-in-picture" src="about:blank"></iframe>
+<button class="music-button" id="musicButton" type="button">♫ Play Wedding Music</button>
 
 <section class="hero">
 <div class="flower">🌸 💕 🌸</div>
@@ -86,24 +100,150 @@ src="about:blank"></iframe>
 <h2>Wedding Celebrations 🌸</h2>
 <div class="events">
 
+<!-- SANGEET -->
 <div class="event">
 <h3>🎶 Sangeet</h3>
 <p>2 February 2027</p>
-<img src="https://images.pexels.com/photos/36248933/pexels-photo-36248933/free-photo-of-elegant-indian-wedding-dance-celebration.jpeg?auto=compress&dpr=1&h=750&w=1260" alt="Indian wedding couple dancing at Sangeet" loading="lazy">
+
+<svg class="event-art" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="sbg" x2="0" y2="1">
+<stop stop-color="#322044"/>
+<stop offset="1" stop-color="#a54a83"/>
+</linearGradient>
+<linearGradient id="slehenga" x2="1" y2="1">
+<stop stop-color="#ffca55"/><stop offset="1" stop-color="#ed438b"/>
+</linearGradient>
+</defs>
+<rect width="320" height="240" fill="url(#sbg)"/>
+<circle cx="45" cy="35" r="30" fill="#ffd66b" opacity=".17"/>
+<circle cx="275" cy="45" r="35" fill="#ff83c4" opacity=".2"/>
+<path d="M0 195 Q160 165 320 195 V240 H0Z" fill="#281b38"/>
+<g class="sparkle" fill="#ffe59b">
+<path d="M45 60l4 12 12 4-12 4-4 12-4-12-12-4 12-4z"/>
+<path d="M270 75l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/>
+<path d="M160 25l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/>
+</g>
+<g class="float">
+<!-- Bride -->
+<path d="M90 112 Q65 145 56 210 Q95 235 145 210 Q137 145 115 112Z" fill="url(#slehenga)" stroke="#ffe2a1" stroke-width="3"/>
+<path d="M83 140l35 0M70 175l65 0M63 200l76 0" stroke="#ffe7a4" stroke-width="3"/>
+<path d="M88 104 Q76 75 100 69 Q125 75 119 105Z" fill="#f4bb8c"/>
+<circle cx="102" cy="83" r="19" fill="#9c593d"/>
+<path d="M84 78 Q90 55 112 65 Q127 73 120 89 Q109 72 84 78" fill="#271b24"/>
+<path d="M86 106l-12 29 30 13 25-13-11-29" fill="#ed9a7b"/>
+<path d="M85 112l-17 20M116 112l17 18" stroke="#f4bb8c" stroke-width="9" stroke-linecap="round"/>
+<!-- Groom -->
+<path d="M183 112 Q170 150 174 211 L242 211 Q247 148 226 112Z" fill="#28345f"/>
+<path d="M183 113l21 16 22-16" fill="#fff0d3"/>
+<circle cx="207" cy="82" r="20" fill="#b97850"/>
+<path d="M187 78 Q190 53 216 62 Q229 67 226 83 Q212 68 187 78" fill="#211923"/>
+<path d="M191 104l-10 30 26 17 25-17-10-30" fill="#b97850"/>
+<path d="M188 113l-17 20M222 113l16 19" stroke="#b97850" stroke-width="9" stroke-linecap="round"/>
+<path d="M190 111l17 17 17-17" fill="none" stroke="#f9d477" stroke-width="4"/>
+</g>
+<text x="160" y="228" fill="#fff0c8" font-size="11" text-anchor="middle" font-family="Poppins">✨ Dance • Music • Celebration ✨</text>
+</svg>
+
 <p>Glamorous outfits, music, dance and celebrations ✨</p>
 </div>
 
+<!-- HALDI -->
 <div class="event">
 <h3>💛 Haldi</h3>
 <p>3 February 2027</p>
-<img src="https://images.pexels.com/photos/33078524/pexels-photo-33078524.jpeg?cs=srgb&dl=pexels-amodita-s-frame-485464413-33078524.jpg&fm=jpg" alt="Indian Haldi ceremony with yellow outfits and flowers" loading="lazy">
+
+<svg class="event-art" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="hbg" x2="0" y2="1">
+<stop stop-color="#fff2b9"/><stop offset="1" stop-color="#f8c96d"/>
+</linearGradient>
+<linearGradient id="hdress" x2="1" y2="1">
+<stop stop-color="#ffeb65"/><stop offset="1" stop-color="#eaa51d"/>
+</linearGradient>
+</defs>
+<rect width="320" height="240" fill="url(#hbg)"/>
+<circle cx="160" cy="95" r="72" fill="#fff9d9" opacity=".5"/>
+<g fill="#fff" opacity=".9">
+<circle cx="35" cy="38" r="5"/><circle cx="285" cy="48" r="5"/>
+<circle cx="52" cy="100" r="4"/><circle cx="265" cy="110" r="5"/>
+</g>
+<path d="M0 202 Q160 178 320 202 V240 H0Z" fill="#d9a24d"/>
+<g class="sparkle" fill="#fff">
+<path d="M40 55l5 12 12 5-12 5-5 12-5-12-12-5 12-5z"/>
+<path d="M275 65l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/>
+</g>
+<g class="float">
+<!-- Bride -->
+<path d="M75 119 Q57 153 54 210 Q93 235 145 210 Q139 151 119 119Z" fill="url(#hdress)" stroke="#fff1a5" stroke-width="3"/>
+<path d="M70 170l65 0M60 198l82 0" stroke="#fff3b5" stroke-width="3"/>
+<circle cx="101" cy="82" r="20" fill="#b97850"/>
+<path d="M81 78 Q87 53 111 63 Q127 69 122 91 Q108 70 81 78" fill="#34221c"/>
+<path d="M83 106l-9 29 27 13 26-13-12-29" fill="#b97850"/>
+<path d="M83 114l-15 22M118 114l16 22" stroke="#b97850" stroke-width="9" stroke-linecap="round"/>
+<!-- Groom -->
+<path d="M183 117 Q169 150 174 211 L246 211 Q249 149 226 117Z" fill="#f2b928"/>
+<circle cx="209" cy="82" r="20" fill="#a96945"/>
+<path d="M189 77 Q194 54 216 63 Q231 70 228 85 Q211 69 189 77" fill="#2b1c1a"/>
+<path d="M192 105l-9 29 26 15 25-15-11-29" fill="#a96945"/>
+<path d="M191 114l-16 21M224 114l17 21" stroke="#a96945" stroke-width="9" stroke-linecap="round"/>
+</g>
+<g fill="#fff">
+<circle cx="68" cy="43" r="5"/><circle cx="78" cy="36" r="5"/><circle cx="88" cy="43" r="5"/>
+<circle cx="232" cy="38" r="5"/><circle cx="242" cy="31" r="5"/><circle cx="252" cy="38" r="5"/>
+</g>
+<text x="160" y="229" fill="#80501f" font-size="11" text-anchor="middle" font-family="Poppins">🌼 Haldi ki Rasmein 🌼</text>
+</svg>
+
 <p>Yellow outfits, floral jewellery and happy moments 🌼</p>
 </div>
 
+<!-- MEHENDI -->
 <div class="event">
 <h3>💚 Mehendi</h3>
 <p>3 February 2027</p>
-<img src="https://images.pexels.com/photos/38773211/pexels-photo-38773211.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Indian wedding Mehendi and henna ceremony" loading="lazy">
+
+<svg class="event-art" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="mbg" x2="0" y2="1">
+<stop stop-color="#d9f4d5"/><stop offset="1" stop-color="#82bd85"/>
+</linearGradient>
+<linearGradient id="mdress" x2="1" y2="1">
+<stop stop-color="#67bd78"/><stop offset="1" stop-color="#16865c"/>
+</linearGradient>
+</defs>
+<rect width="320" height="240" fill="url(#mbg)"/>
+<circle cx="160" cy="92" r="75" fill="#f5ffe7" opacity=".4"/>
+<g fill="#fff1bb">
+<circle cx="43" cy="42" r="6"/><circle cx="275" cy="50" r="6"/>
+<circle cx="65" cy="92" r="5"/><circle cx="255" cy="103" r="5"/>
+</g>
+<path d="M0 201 Q160 179 320 201 V240 H0Z" fill="#659c65"/>
+<g class="sparkle" fill="#fff">
+<path d="M40 57l4 11 11 4-11 4-4 11-4-11-11-4 11-4z"/>
+<path d="M278 68l4 9 9 4-9 4-4 9-4-9-9-4 9-4z"/>
+</g>
+<g class="float">
+<!-- Bride -->
+<path d="M75 117 Q60 150 55 210 Q98 234 146 210 Q138 149 119 117Z" fill="url(#mdress)" stroke="#c4f2b8" stroke-width="3"/>
+<path d="M68 168h68M61 197h78" stroke="#c6eeb7" stroke-width="3"/>
+<circle cx="101" cy="82" r="20" fill="#b97850"/>
+<path d="M81 78 Q87 53 111 63 Q127 69 122 91 Q108 70 81 78" fill="#34221c"/>
+<path d="M83 106l-9 29 27 13 26-13-12-29" fill="#b97850"/>
+<path d="M83 114l-15 22M118 114l16 22" stroke="#b97850" stroke-width="9" stroke-linecap="round"/>
+<!-- Groom -->
+<path d="M183 117 Q169 150 174 211 L246 211 Q249 149 226 117Z" fill="#23754c"/>
+<circle cx="209" cy="82" r="20" fill="#a96945"/>
+<path d="M189 77 Q194 54 216 63 Q231 70 228 85 Q211 69 189 77" fill="#2b1c1a"/>
+<path d="M192 105l-9 29 26 15 25-15-11-29" fill="#a96945"/>
+<path d="M191 114l-16 21M224 114l17 21" stroke="#a96945" stroke-width="9" stroke-linecap="round"/>
+</g>
+<g fill="#4c8d54">
+<path d="M20 180q20-35 35-10q-20 0-35 10M280 180q-20-35-35-10q20 0 35 10"/>
+</g>
+<text x="160" y="229" fill="#fff" font-size="11" text-anchor="middle" font-family="Poppins">🌿 Mehendi Celebration 🌿</text>
+</svg>
+
 <p>Green outfits, beautiful henna and mehendi decorations 🌿</p>
 </div>
 
@@ -186,7 +326,6 @@ document.body.appendChild(heart);
 setTimeout(()=>heart.remove(),8500);
 },600);
 
-
 /* COUNTDOWN */
 const weddingDate=new Date("2027-02-04T00:00:00").getTime();
 
@@ -208,7 +347,6 @@ countdown.textContent=days+" Days "+hours+" Hours "+minutes+" Minutes "+seconds+
 }
 updateCountdown();
 setInterval(updateCountdown,1000);
-
 
 /* SCRATCH CARD */
 const canvas=document.getElementById("scratch");
@@ -284,7 +422,6 @@ canvas.addEventListener("pointerup",()=>drawing=false);
 canvas.addEventListener("pointercancel",()=>drawing=false);
 setupScratch();
 
-
 /* RSVP FORM */
 document.getElementById("rsvpForm").addEventListener("submit",function(e){
 e.preventDefault();
@@ -292,9 +429,7 @@ alert("Thank you for your response! ❤️");
 this.reset();
 });
 
-
-/* WEDDING MUSIC - FIRST TAP ANYWHERE */
-
+/* YOUTUBE SHORTS MUSIC */
 const musicFrame=document.getElementById("musicFrame");
 const musicButton=document.getElementById("musicButton");
 
@@ -304,32 +439,14 @@ const weddingMusicURL=
 let musicStarted=false;
 
 function startWeddingMusic(){
-
 if(musicStarted)return;
-
-musicStarted=true;
-
 musicFrame.src=weddingMusicURL;
-
-musicButton.textContent="♫ Music Requested";
+musicStarted=true;
+musicButton.textContent="♫ Wedding Music Playing";
 }
 
-/* First tap anywhere on the website */
-document.addEventListener("pointerdown",function(){
-startWeddingMusic();
-},{once:true,capture:true});
-
-/* Play button also works */
-musicButton.addEventListener("click",function(){
-startWeddingMusic();
-});
-
-/* Keyboard interaction */
-document.addEventListener("keydown",function(){
-startWeddingMusic();
-},{once:true});
+musicButton.addEventListener("click",startWeddingMusic);
 
 </script>
-
 </body>
-</html>
+  </html>
